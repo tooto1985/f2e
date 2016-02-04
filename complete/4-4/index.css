@@ -1,0 +1,52 @@
+body
+{
+    background-image: url(images/bg.png);
+}
+
+.box
+{
+    position: relative;
+    left: 50%;
+    margin-left: -200px;
+    width: 400px;
+    top: 200px;
+}
+
+#search
+{
+    width: 400px;
+    border: 1px solid white;
+    background-color: gray;
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+    outline: none;
+}
+
+.list
+{
+    width: 408px;
+    border: 2px solid lightgrey;
+    max-height: 300px;
+    overflow: auto;
+    display: none;
+    text-align: left;
+    background-color: white;
+    margin-top: -2px;
+    position:relative;
+}
+
+    .list > a
+    {
+        display: block;
+        height: 30px;
+        font-size: 25px;
+        font-family: arial;
+        cursor:pointer;
+    }
+
+        .list > a.selected
+        {
+            color:white;
+            background-color: gray;
+        }

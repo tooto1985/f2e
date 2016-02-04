@@ -1,0 +1,29 @@
+﻿body {
+    background-color: aliceblue;
+}
+
+img {
+    float: left;
+}
+
+#search {
+    display: block;
+    width: 250px;
+    padding: 10px;
+    border-radius: 0 20px 20px 0;
+    border: 2px solid #088DA5;
+    font-size: 17px;
+    outline: none;
+    background-color: lightgoldenrodyellow;
+    height: 26px;
+}
+
+.box {
+    border: 4px solid #c0c0c0;
+    margin: 10px 10px;
+    padding: 10px;
+    border-radius: 20px;
+    float: left;
+    min-width: 250px;
+    background-color: honeydew;
+}

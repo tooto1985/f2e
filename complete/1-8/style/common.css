@@ -1,0 +1,70 @@
+﻿.menu
+{
+    height: 17px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.menu > a
+{
+    padding: 5px;
+    color: gray;
+    background-color: #efefef;
+    border-radius: 10px 10px 0 0;
+    font-size: 16px;
+    text-decoration: none;
+    font-family: 微軟正黑體;
+    transition: color .5s, background-color .5s;
+    margin-right: 5px;
+}
+
+.menu > a:hover
+{
+    color: #efefef;
+    background-color: gray;
+    transition: color .5s, background-color .5s;
+}
+
+.menu > a.selected
+{
+    color: green;
+    background-color: greenyellow;
+    transition: color .5s, background-color .5s;
+}
+
+.menu > a.selected:hover
+{
+    color: greenyellow;
+    background-color: green;
+    transition: color .5s, background-color .5s;
+}
+
+body
+{
+    margin: 0 10px;
+    background-color: olivedrab;
+}
+
+hr
+{
+    height: 10px;
+    border: 0;
+    background-color: gainsboro;
+}
+
+.content
+{
+    background-color: white;
+    border: 10px solid greenyellow;
+    border-radius: 10px 10px 0 0;
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    right: 10px;
+    padding: 10px;
+}
+
+.content > img
+{
+    width: 100%;
+}

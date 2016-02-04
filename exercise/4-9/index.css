@@ -1,0 +1,35 @@
+﻿body
+{
+    text-align: center;
+    background-image: url(images/bg.jpg);
+    background-size: cover;
+}
+
+.box
+{
+    border: 1px solid #d0d0d0;
+    width: 490px;
+    height: 400px;
+    overflow: auto;
+    margin: 5px auto;
+    background-color: #efefef;
+    background-color: rgba(255,255,255,0.8);
+    text-align: left;
+}
+
+    .box div
+    {
+        padding: 5px;
+    }
+
+#name
+{
+    width: 50px;
+    margin-bottom: 0;
+}
+
+#message
+{
+    width: 268px;
+    margin-bottom: 0;
+}

@@ -1,0 +1,20 @@
+﻿body
+{
+    background-image: url(images/bg.jpg);
+}
+
+.outbox
+{
+    text-align: center;
+    margin: 10px;
+}
+
+.box
+{
+    display: block;
+}
+
+.btn
+{
+    margin-top: 10px;
+}

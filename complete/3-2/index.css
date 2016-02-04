@@ -1,0 +1,22 @@
+﻿body
+{
+    margin: 0;
+}
+
+.bg
+{
+    width: 1200px;
+    height: 800px;
+    background-image: url(images/bg.png);
+}
+
+.photo
+{
+    width: 791px;
+    height: 674px;
+    background-color: pink;
+    position: absolute;
+    margin-top: 62px;
+    margin-left: 59px;
+    overflow: hidden;
+}

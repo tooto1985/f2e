@@ -1,0 +1,24 @@
+﻿body
+{
+    background-color: Black;
+}
+
+#message
+{
+    width: 320px;
+    height: 209px;
+    background-image: url(images/bg.jpg);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -180px;
+    margin-left: -270px;
+    text-align: center;
+    padding-top: 150px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 微軟正黑體;
+    padding-left: 110px;
+    padding-right: 110px;
+    border-radius: 200px;
+}

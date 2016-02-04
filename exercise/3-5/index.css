@@ -1,0 +1,74 @@
+﻿body
+{
+    background-image: url(images/bg.jpg);
+    background-size: contain;
+}
+
+.outbox
+{
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.scrollable
+{
+    width: 800px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+.inbox
+{
+    width: 20000em;
+    position: absolute;
+    left: 0;
+}
+
+.inbox > div
+{
+    width: 800px;
+    float: left;
+}
+
+.prev
+{
+    width: 30px;
+    height: 30px;
+    background-image: url(images/flag.png);
+    position: absolute;
+    margin-top: -315px;
+    margin-left: -40px;
+}
+
+.next
+{
+    width: 30px;
+    height: 30px;
+    background-image: url(images/flag.png);
+    background-position: 0 -30px;
+    position: absolute;
+    margin-top: -315px;
+    margin-left: 810px;
+}
+
+.navi
+{
+    width: 800px;
+    text-align: center;
+}
+
+.navi > span
+{
+    width: 8px;
+    height: 8px;
+    background-image: url(images/dot.png);
+    margin: 5px;
+    display: inline-block;
+}
+
+.navi > span.active
+{
+    background-position: 0 -16px;
+}

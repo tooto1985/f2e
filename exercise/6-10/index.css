@@ -1,0 +1,18 @@
+﻿body
+{
+    text-align: center;
+    margin: 10px;
+}
+
+label {
+	display: inline;
+}
+
+button.btn {
+	display: none;
+}
+
+#show {
+	margin-top: 20px;
+	display: none;
+}

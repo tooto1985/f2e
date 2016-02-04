@@ -1,0 +1,30 @@
+﻿body
+{
+    background-color: #E9EAED;
+}
+
+.box>div
+{
+    width: 400px;
+    border: 1px solid #D0D1D5;
+    background-color: White;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+.box>div>div:first-child
+{
+    color: #3B59B1;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.box>div>div
+{
+    color: #333333;
+}
+
+*
+{
+    font-size: 14px;
+}

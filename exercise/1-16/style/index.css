@@ -1,0 +1,27 @@
+﻿#out {
+	width:500px;
+	height:500px;
+	background-color:yellowgreen;
+	position:relative;
+	margin:auto;
+	border-radius:250px;
+}
+
+#in {
+	width:200px;
+	height:200px;
+	background-color:green;
+	margin:150px;
+	position:absolute;
+	border-radius:100px
+}
+
+#text {
+	width:500px;
+	margin: auto;
+}
+
+#left,#right {
+	width:50%;
+	float:left;
+}

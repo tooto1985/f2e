@@ -1,0 +1,8 @@
+﻿ul.dropdown-menu
+{
+    display: block;
+	top: 20px;
+	left: 50%;
+	margin-left: -90px;
+	cursor: pointer;
+}

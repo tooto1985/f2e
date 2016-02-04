@@ -1,0 +1,72 @@
+﻿[
+	{
+	   "name":"John",
+	   "age": 32,
+	   "skill": ["Photoshop","Illustrator"],
+	   "title": "美術設計師",
+	   "year": 3
+	},
+	{
+	   "name":"Teresa",
+	   "age": 26,
+	   "skill": ["Excel","Power Point"],
+	   "title": "行政助理",
+	   "year": 1
+	},
+	{
+	   "name":"Amos",
+	   "age": 28,
+	   "skill": ["HTML","CSS"],
+	   "title": "網頁設計師",
+	   "year": 2
+	},
+	{
+	   "name":"Jack",
+	   "age": 31,
+	   "skill": ["JavaScript","jQuery"],
+	   "title": "前端工程師",
+	   "year": 5
+	},
+	{
+	   "name":"Susan",
+	   "age": 26,
+	   "skill": ["Word","Outlook"],
+	   "title": "業務助理",
+	   "year": 2
+	},
+	{
+	   "name":"Allen",
+	   "age": 30,
+	   "skill": ["ASP.NET","SQL"],
+	   "title": "後端工程師",
+	   "year": 6
+	},
+	{
+	   "name":"Bill",
+	   "age": 35,
+	   "skill": ["專案管理"],
+	   "title": "經理",
+	   "year": 10
+	},
+	{
+	   "name":"David",
+	   "age": 28,
+	   "skill": ["DBA","SQL"],
+	   "title": "資料管理師",
+	   "year": 4
+	},
+	{
+	   "name":"Eddie",
+	   "age": 25,
+	   "skill": ["HTML","JavaScript"],
+	   "title": "網頁設計師",
+	   "year": 1
+	},
+	{
+	   "name":"Jim",
+	   "age": 29,
+	   "skill": ["Word","Excel"],
+	   "title": "業務",
+	   "year": 3
+	}
+]

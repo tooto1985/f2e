@@ -1,0 +1,26 @@
+﻿body
+{
+    background-image: url(images/bg.jpg);
+    background-size: contain;
+}
+
+.scrollable
+{
+    width: 800px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.inbox
+{
+    width: 20000em;
+    position: absolute;
+}
+
+.inbox > div
+{
+    width: 800px;
+    float: left;
+}
