@@ -31,13 +31,13 @@
     function sort(key, direction) {
         json.sort(function(a, b) {
             if (direction == "up") {
-                if (a[key].customSort() > b[key].customSort()) {
+                if (a[key] > b[key]) {
                     return 1;
                 } else {
                     return -1;
                 }
             } else {
-                if (a[key].customSort() < b[key].customSort()) {
+                if (a[key] < b[key]) {
                     return 1;
                 } else {
                     return -1;
@@ -45,8 +45,12 @@
             }
         });
     }
+    function customSort(input) {
+        input = input.replace("一","1");
+        input = input.replace("二","2");
+        input = input.replace("三","3");
+        input = input.replace("四","4");
+        input = input.replace("五","5");
+        return input;
+    }
 });
-
-String.prototype.customSort=function() {
-    return this.replace("一","1").replace("二","2").replace("三","3").replace("四","4").replace("五","5");
-};

@@ -1,27 +1,27 @@
 ﻿[
 	{
 		"date":"09/01",
-		"className":"一Responsive Web Design 網頁版型設計",
+		"className":"Responsive Web Design 網頁版型設計",
 		"peoples":20
 	},
 	{
 		"date":"09/05",
-		"className":"四Photoshop 影像設計專修班",
+		"className":"Photoshop 影像設計專修班",
 		"peoples":12
 	},
 	{
 		"date":"09/10",
-		"className":"三CSS3 視覺及動態特效應用班",
+		"className":"CSS3 視覺及動態特效應用班",
 		"peoples":16
 	},
 	{
 		"date":"08/25",
-		"className":"五Dreamweaver & CSS 網頁版型設計班",
+		"className":"Dreamweaver & CSS 網頁版型設計班",
 		"peoples":9
 	},
 	{
 		"date":"08/20",
-		"className":"二CSS 語法 div 版面設計專修班",
+		"className":"CSS 語法 div 版面設計專修班",
 		"peoples":5
 	}
 ]
