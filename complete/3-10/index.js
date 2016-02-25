@@ -45,4 +45,12 @@
             }
         });
     }
+    function customSort(input) {
+        input = input.replace("一","1");
+        input = input.replace("二","2");
+        input = input.replace("三","3");
+        input = input.replace("四","4");
+        input = input.replace("五","5");
+        return input;
+    }
 });
