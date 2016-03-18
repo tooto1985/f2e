@@ -12,7 +12,6 @@
             $("#message").val("");
         }
     }
-
     $("#send").click(function() {
         sendMessage($("#message").val());
     });
