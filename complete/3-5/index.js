@@ -52,17 +52,11 @@
                 });
             }
         }
-        $(".next").click(function() {
-            run();
-        });
-        $(".prev").click(function() {
-            back();
-        });
+        $(".next").click(run);
+        $(".prev").click(back);
         $(".navi>span").click(function() {
             index = $(this).index();
-            $(".inbox").animate({left: index * -800}, function() {
-                dot();
-            });
+            $(".inbox").animate({left: index * -800}, dot);
         });
     });
 });

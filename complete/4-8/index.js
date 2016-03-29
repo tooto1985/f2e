@@ -8,11 +8,10 @@
                 $(".box").animate({ "scrollTop": $(".box").prop("scrollHeight") - $(".box").height() }, 200);
             }
         });
-        if (!message) {
+        if (message) {
             $("#message").val("");
         }
     }
-
     $("#send").click(function() {
         sendMessage($("#message").val());
     });

@@ -33,14 +33,10 @@
             if (direction == "up") {
                 if (a[key] > b[key]) {
                     return 1;
-                } else {
-                    return -1;
                 }
             } else {
                 if (a[key] < b[key]) {
                     return 1;
-                } else {
-                    return -1;
                 }
             }
         });

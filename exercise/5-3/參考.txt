@@ -1,3 +1,5 @@
 ﻿http://json2jsonp.com
 
-http://data.taipei.gov.tw/opendata/apply/NewDataContent?oid=AF0123CE-40D2-4804-89F3-1D4BEB803D22
+http://data.taipei/opendata/datalist/datasetMeta?oid=6fa3ed67-e60e-44d9-a366-ce7008e322de
+
+http://maps.google.com.tw/maps?f=q&hl=zh-TW&z=16&q=地址

@@ -21,11 +21,7 @@
     function pager(data, count, index) {
         return data.filter(function(a) {
             var i = data.indexOf(a); //目前資料的索引位置
-            if (i >= count * (index - 1) && i < count * index) {
-                return true;
-            } else {
-                return false;
-            }
+            return i >= count * (index - 1) && i < count * index;
         });
     }
 

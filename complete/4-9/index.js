@@ -1,6 +1,6 @@
 ﻿$(function() {
     function sendMessage(message) {
-        if (message) {
+        if (!message) {
             $.getJSON("http://tw.somee.com/demo/4-9/data.ashx", function(data) {
                 if (data.length > 0) {
                     for (var i = 0; i < data.length; i++) {
