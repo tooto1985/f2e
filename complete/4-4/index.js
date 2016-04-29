@@ -1,8 +1,16 @@
 ﻿$(function() {
+    function getIndex(index,length) {
+        if (index < 0) {
+            index = length - 1;
+        } else if (index >= length) {
+            index = 0;
+        }
+        return index;
+    }
     function getTop(index,top) {
         if (top < 0) {
             return index * 30;
-        } else if (top >= 300) {
+        } else if (top > 270) {
             return (index - 9) * 30;
         }
     }
@@ -11,13 +19,12 @@
             return ++index;
         }
         return --index;
-    }
+    }    
     $("#search").keydown(function(e) {
         if (e.keyCode == 40 || e.keyCode == 38) {
-            var index = getAdd($("a.selected").removeClass().index(),e.keyCode);
-            if (index>=$(".list>a").length) {
-                index=0;
-            }
+            var index = $("a.selected").removeClass().index();
+            index = getAdd(index,e.keyCode);
+            index = getIndex(index,$(".list>a").length);
             var top = $(".list>a").eq(index).addClass("selected").position().top;
             $(".list").scrollTop(getTop(index,top));
         }
