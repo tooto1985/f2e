@@ -1,26 +1,26 @@
 ﻿$(function() {
+    function getIndex(index,length) {
+        if (index < 0) {
+            index = length - 1;
+        } else if (index >= length) {
+            index = 0;
+        }
+        return index;
+    }
+    function getTop(index,top) {
+        if (top < 0) {
+            return index * 30;
+        } else if (top > 270) {
+            return (index - 9) * 30;
+        }
+    }
+    function getAdd(index, keyCode) {
+        if (keyCode == 40) {
+            return ++index;
+        }
+        return --index;
+    }    
     $("#search").keydown(function(e) {
-        function getIndex(index,length) {
-            if (index < 0) {
-                index = length - 1;
-            } else if (index >= length) {
-                index = 0;
-            }
-            return index;
-        }
-        function getTop(index,top) {
-            if (top < 0) {
-                return index * 30;
-            } else if (top > 270) {
-                return (index - 9) * 30;
-            }
-        }
-        function getAdd(index, keyCode) {
-            if (keyCode == 40) {
-                return ++index;
-            }
-            return --index;
-        }
         if (e.keyCode == 40 || e.keyCode == 38) {
             var index = $("a.selected").removeClass().index();
             index = getAdd(index,e.keyCode);
