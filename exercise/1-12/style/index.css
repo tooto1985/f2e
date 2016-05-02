@@ -1,41 +1,38 @@
-﻿body
-{
-    background-image: url(../images/image.jpg);
-    margin: 0;
-    background-size: cover;
-}
-#menu
-{
-    text-align: center;
-    margin-top: 10px;
+﻿body {
+    background-image: url(../images/p-bg.png);
 }
 
-#menu a
-{
-    background-color: rgba(255,255,255,0.5);
-    padding: 20px;
-    display: inline-block;
-    border-radius: 20px;
-    margin: 10px;
-    color: Black;
-    font-size: 20px;
-    text-decoration: none;
-    width: 80px;
-    height: 24px;
-}
-
-#menu a:hover 
-{
-    background-color: rgba(255,255,255,0.75);
-}
-
-.content
-{
-    width: 657px;
-    height: 657px;
-    background-color: rgba(255,255,255,0.5);
+.outbox {
+    width: 490px;
     margin: 0 auto;
-    margin-top: 10px;
-    border-radius: 20px 20px 0 0;
     padding: 20px;
+    border: 1px solid #efefef;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: 0px 0px 10px gray;
+    margin-top: 100px;
+}
+
+h3 {
+    text-align:center;
+}
+
+.contract {
+    font-size:12px
+}
+
+.checkbox {
+    width:290px;
+    margin:10px auto 0 auto;
+}
+
+#register {
+    margin:20px auto;
+    width: 162px;
+    height: 43px;
+    background-image:url(../images/register-button.png);
+}
+
+#register.off {
+    opacity:0.5;
 }
