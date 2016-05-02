@@ -2,20 +2,3 @@
 {
     text-align: center;
 }
-
-body
-{
-    height: 5000px;
-    background-color: gainsboro;
-}
-
-#show
-{
-    position: fixed;
-    width: 50px;
-    height: 25px;
-    background-color: #efefef;
-    right: 0;
-    top: 0;
-    text-align: right;
-}
