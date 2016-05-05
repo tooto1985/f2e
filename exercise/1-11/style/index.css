@@ -1,32 +1,41 @@
-﻿html,body {
-    height:100%;
-    width:100%;
-    margin:0;
-}
-body {
-    background-image: url(../images/bg.jpg);
+﻿body
+{
+    background-image: url(../images/image.jpg);
+    margin: 0;
     background-size: cover;
 }
-#box {
-    position:absolute;
-    top:25%;
-    left:25%;
-    width:50%;
-    height:50%;
-    background-color:greenyellow;
-    box-shadow: 10px 10px 15px rgba(0,0,0,0.6);
-    border-radius:10px;
-    font-family:微軟正黑體;
-    font-size:18px;
-    color:green;
+#menu
+{
+    text-align: center;
+    margin-top: 10px;
 }
-#box>div {
-    padding:5%;
+
+#menu a
+{
+    background-color: rgba(255,255,255,0.5);
+    padding: 20px;
+    display: inline-block;
+    border-radius: 20px;
+    margin: 10px;
+    color: Black;
+    font-size: 20px;
+    text-decoration: none;
+    width: 80px;
+    height: 24px;
 }
-#btn {
-    position:absolute;
-    top:50%;
-    left:50%;
-    margin-left:-34px;
-    margin-top:-11px;
+
+#menu a:hover 
+{
+    background-color: rgba(255,255,255,0.75);
+}
+
+.content
+{
+    width: 657px;
+    height: 657px;
+    background-color: rgba(255,255,255,0.5);
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
 }

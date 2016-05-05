@@ -1,9 +1,11 @@
 ﻿$(function() {
-	$("#menu").load("menu.html", function() {
-		$("#menu a").on("mouseenter mouseleave", function() {
-			var temp = $(this).text();
-			$(this).text($(this).data("english"));
-			$(this).data("english", temp);
-		});
-	});
+	$("#checkbox").change(function() {
+		if ($(this).is(":checked")) {
+			$("#register").on("click", function() {
+				location.href = "../4-2/index.html";
+			}).removeClass();
+		} else {
+			$("#register").off("click").addClass("off");
+		}
+	}).change();
 });

@@ -1,8 +1,9 @@
 ﻿$(function() {
-    console.info("資訊");
-    console.warn("警告");
-    console.error("錯誤");
-    $.getJSON("data.json", function(data) {
-        console.table(data);
-    });
+	var text = "PC";
+    if (/android/i.test(navigator.userAgent)) {
+    	text = "Android";
+    } else if (/iphone/i.test(navigator.userAgent)) {
+    	text = "iPhone";
+    }
+    $("body").append("<div>" + text + "版網頁</div>");
 });

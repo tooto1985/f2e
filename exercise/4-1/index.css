@@ -2,7 +2,7 @@
 
 html
 {
-    background: url(http://thekitemap.com/images/feedback-img.jpg) no-repeat;
+    background: url(images/feedback-img.jpg) no-repeat;
     background-size: cover;
     height: 100%;
 }
@@ -74,40 +74,15 @@ html
 /* Icons ---------------------------------- */
 #name
 {
-    background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZmlsbD0iIzNjM2MzYyI+PHBhdGggaWQ9InVzZXItaWNvbiIgZD0iTTQwNy40NDgsMzYwLjQ3NGMtNTkuMDM2LTEzLjYxNy0xMTMuOTg5LTI1LjU0MS04Ny4zNzUtNzUuNzE3YzgxLjAxLTE1Mi43MjksMjEuNDczLTIzNC40MDYtNjQuMDcyLTIzNC40MDZjLTg3LjIzMSwwLTE0NS4zMDMsODQuODEyLTY0LjA3MiwyMzQuNDA2YzI3LjQxMiw1MC40ODItMjkuNjA4LDYyLjM5My04Ny4zNzUsNzUuNzE3Yy01OS4wMTIsMTMuNjA5LTU0LjQ3Myw0NC43MjMtNTQuNDczLDEwMS4xNzZoNDExLjgzOEM0NjEuOTE5LDQwNS4xOTYsNDY2LjQ1OCwzNzQuMDgzLDQwNy40NDgsMzYwLjQ3NHoiLz48L3N2Zz4=);
     background-size: 30px 30px;
     background-position: 11px 8px;
     background-repeat: no-repeat;
 }
-
-    #name:focus
-    {
-        background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
-        background-size: 30px 30px;
-        background-position: 8px 5px;
-        background-position: 11px 8px;
-        background-repeat: no-repeat;
-    }
 
 #email
 {
-    background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
-    background-size: 30px 30px;
-    background-position: 11px 8px;
-    background-repeat: no-repeat;
-}
-
-    #email:focus
-    {
-        background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
-        background-size: 30px 30px;
-        background-position: 11px 8px;
-        background-repeat: no-repeat;
-    }
-
-#comment
-{
-    background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZmlsbD0iIzNjM2MzYyI+PHBhdGggaWQ9ImVtYWlsLTMtaWNvbiIgZD0iTTI1Ni4wMTcsMjczLjQzNkw1MC44NDcsMTAzLjQwN2g0MTAuOTA0TDI1Ni4wMTcsMjczLjQzNnogTTI1NS45ODMsMzI4Ljg5OEw1MCwxNTguMjQ0djI1MC4zNDloNDEyVjE1OC42NTNMMjU1Ljk4MywzMjguODk4eiIvPjwvc3ZnPg==);
     background-size: 30px 30px;
     background-position: 11px 8px;
     background-repeat: no-repeat;

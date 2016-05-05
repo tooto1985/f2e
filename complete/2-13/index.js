@@ -1,4 +1,6 @@
-﻿$(function () {
-    var progress = 45;
-    $(".bar").width(progress + "%");
+﻿$(function() {
+    $(window).scroll(function() {
+        $("#show").text($(this).scrollTop());
+        console.log($(this).scrollTop());
+    }).scroll();
 });
