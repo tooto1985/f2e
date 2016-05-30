@@ -17,7 +17,7 @@
     });
     $("#message").keyup(function(e) {
         if (e.keyCode == 13) {
-            sendMessage($("#message").val());
+            sendMessage($(this).val());
         }
     });
     setInterval(sendMessage, 3000);
