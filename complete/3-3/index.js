@@ -12,6 +12,6 @@
             });
         }
         setInterval(run, 3000);
-        run()
+        run();
     });
 });
