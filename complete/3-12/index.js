@@ -2,7 +2,6 @@
     var json;
     var pagerCount = 5; //每頁顯示幾筆
     var currentIndex = 1; //目前在第幾頁
-
     function show(data) {
         var html = "";
         for (var i = 0; i < data.length; i++) {
@@ -12,19 +11,16 @@
         }
         $("#content").html(html);
     }
-
     $.getJSON("data.json", function(data) {
         json = data;
         show(pager(json, pagerCount, currentIndex));
     });
-
     function pager(data, count, index) {
         return data.filter(function(a) {
             var i = data.indexOf(a); //目前資料的索引位置
             return i >= count * (index - 1) && i < count * index;
         });
     }
-
     $("#first").click(function() {
         currentIndex = 1;
         show(pager(json, pagerCount, currentIndex));
