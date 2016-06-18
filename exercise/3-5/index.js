@@ -20,10 +20,9 @@
             });
         }
         var sid = setInterval(run, 2000);
-        $(".inbox").mouseenter(function() {
+        $(".inbox").hover(function() {
             clearInterval(sid);
-        });
-        $(".inbox").mouseleave(function() {
+        },function() {
             sid = setInterval(run, 2000);
         });
     });
