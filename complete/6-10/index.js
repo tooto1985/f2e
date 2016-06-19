@@ -5,7 +5,6 @@
         }
     });
 })(jQuery);
-
 $(function() {
     $("input").keyup(function() {
         var count = $("input:hasValue").length;
