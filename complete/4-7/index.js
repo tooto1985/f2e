@@ -18,11 +18,9 @@
         });
     }
     $(window).scroll(function() {
-        if ($(window).scrollTop() > $(document).height() - $(window).height() - 100) {
-            if (oldder != current) {
-                getArticle(current, 3);
-                oldder = current;
-            }
+        if (oldder != current && $(window).scrollTop() > $(document).height() - $(window).height() - 100) {
+            getArticle(current, 3);
+            oldder = current;
         }
     });
     getArticle(current, 5);
