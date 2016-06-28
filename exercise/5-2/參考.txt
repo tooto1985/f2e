@@ -2,4 +2,6 @@
 
 http://data.taipei/opendata/datalist/datasetMeta?oid=6fa3ed67-e60e-44d9-a366-ce7008e322de
 
+http://meyerweb.com/eric/tools/dencoder/
+
 http://maps.google.com.tw/maps?f=q&hl=zh-TW&z=16&q=地址
