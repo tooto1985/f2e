@@ -15,14 +15,14 @@
         $(".navigation").html(build(data, 0));
     });
     $(".navigation").on("mouseenter", "a", function() {
-    	var $parent = $(this).parent();
-    	var link="";
-    	while(!$parent.hasClass("navigation")) {
-    		if($parent.is("li")) {
-    			link="＞" + $parent.find(">a").text() + link;
-    		}
-    		$parent = $parent.parent();
-    	}
-    	$(".link").html(link.substr(1));
+        var $parent = $(this).parent();
+        var link = "";
+        while (!$parent.hasClass("navigation")) {
+            if ($parent.is("li")) {
+                link = "＞" + $parent.find(">a").text() + link;
+            }
+            $parent = $parent.parent();
+        }
+        $(".link").html(link.substr(1));
     });
 });

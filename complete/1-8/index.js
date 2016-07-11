@@ -1,6 +1,6 @@
 ﻿$(function() {
     $(window).load(function() {
-        $(".loading").delay(500).fadeOut();
+        $(".loading").fadeOut();
     });
     var progress = 0;
     $("img").load(function() {

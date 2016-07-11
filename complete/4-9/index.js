@@ -2,7 +2,7 @@
     function sendMessage(message) {
         if (!message) {
             $.getJSON("http://tw.somee.com/demo/4-9/data.ashx", function(data) {
-                if (data.length > 0) {
+                if (data.length) {
                     for (var i = 0; i < data.length; i++) {
                         $(".box").append("<div>" + data[i] + "</div>");
                     }

@@ -5,7 +5,7 @@
             $.getJSON("http://tw.somee.com/demo/4-4/data.ashx", {
                 search: value
             }, function(data) {
-                if (data.length > 0) {
+                if (data.length) {
                     var html = "";
                     for (var i = 0; i < data.length; i++) {
                         html += "<a>" + data[i] + "</a>";

@@ -4,8 +4,8 @@
         var html = "";
         for (var i = 0; i < data.length; i++) {
             html += "<tr>";
-            html += "<td>" + data[i].date + "</td>";
-            html += "<td>" + data[i].className + "</td>";
+            html += "<td>" + data[i]["date"] + "</td>";
+            html += "<td>" + data[i]["className"] + "</td>";
             html += "<td>" + data[i]["peoples"] + "</td>";
             html += "</tr>";
         }
@@ -17,7 +17,7 @@
     });
     $(".bordered th").click(function() {
         var $this = $(this);
-        $(".bordered th").not($this).removeClass();
+        $this.siblings().removeClass();
         if ($this.hasClass("up")) {
             $this.removeClass().addClass("down");
         } else {
