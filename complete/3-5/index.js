@@ -43,7 +43,7 @@
             if (!$(".inbox").is(":animated")) {
                 if (index <= 0) {
                     index = data.length;
-                    $(".inbox").css("left", data.length * -800);
+                    $(".inbox").css("left", index * -800);
                 }
                 $(".inbox").animate({left: "+=800"}, function() {
                     index--;
