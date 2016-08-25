@@ -1,10 +1,11 @@
 ﻿(function($) {
     $.fn.render = function(data) {
-        var html = this.html();
-        for (var key in data) {
-            html = html.replace("{{" + key + "}}", data[key]);
-        }
-        this.html(html);
+        this.html(function(index, oldhtml) {
+            for (var key in data) {
+                oldhtml = oldhtml.replace("{{" + key + "}}", data[key]);
+            }
+            return oldhtml;
+        });
     };
 })(jQuery);
 $(function() {
