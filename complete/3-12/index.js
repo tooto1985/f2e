@@ -3,13 +3,17 @@
     var pagerCount = 5; //每頁顯示幾筆
     var currentIndex = 1; //目前在第幾頁
     function show(data) {
-        var html = "";
+        var $table = $("<talbe>");
         for (var i = 0; i < data.length; i++) {
-            html += "<tr>";
-            html += "<td><a href=\"" + data[i].url + "\">" + data[i].title + "</a></td>";
-            html += "</tr>";
+            $table.append(
+                $("<tr>").append(
+                    $("<td>").append(
+                        $("<a>").attr("href", data[i].url).text(data[i].title)
+                    )
+                )
+            );
         }
-        $("#content").html(html);
+        $("#content").html($table.html());
     }
     $.getJSON("data.json", function(data) {
         json = data;
