@@ -1,9 +1,7 @@
 ﻿(function($) {
-	
-
-
-
-
+    
+    
+    
 })(jQuery);
 $(function() {
     $("input").keyup(function() {
