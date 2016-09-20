@@ -8,5 +8,5 @@
             return prev + (next * weight[i]);
         }, 0) % 10 === 0;
     }
-	
+    
 });

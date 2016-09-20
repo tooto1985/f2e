@@ -5,14 +5,14 @@
 }
 
 label {
-	display: inline;
+    display: inline;
 }
 
 button.btn {
-	display: none;
+    display: none;
 }
 
 #show {
-	margin-top: 20px;
-	display: none;
+    margin-top: 20px;
+    display: none;
 }
