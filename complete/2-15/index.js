@@ -1,9 +1,9 @@
 ﻿$(function() {
-	var text = "PC";
+    var text = "PC";
     if (/android/i.test(navigator.userAgent)) {
-    	text = "Android";
+        text = "Android";
     } else if (/iphone/i.test(navigator.userAgent)) {
-    	text = "iPhone";
+        text = "iPhone";
     }
     $("body").append("<div>" + text + "版網頁</div>");
 });

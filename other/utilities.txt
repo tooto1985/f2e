@@ -1,0 +1,12 @@
+http://jsbin.com
+http://jex.im/regulex
+http://jsperf.com
+http://json.parser.online.fr
+http://jscompress.com
+http://cssminifier.com
+http://getbootstrap.com
+http://devdocs.io
+http://james.padolsey.com/jquery
+http://youmightnotneedjquery.com
+http://fakeimg.pl
+http://oscarotero.com/jquery

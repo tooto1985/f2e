@@ -5,6 +5,8 @@
                 $("body").append("<div>" + data[i] + "</div>");
             }
         
+
+        
     }
     show();
     show(["John", "Tom", "Mark"]);

@@ -1,12 +1,12 @@
 ﻿body{
-	background-image: url(images/bg.jpg);
-	padding-top:20px;
+    background-image: url(images/bg.jpg);
+    padding-top:20px;
 }
 
 .row, .col-md-4 {
-	background-color: transparent;
+    background-color: transparent;
 }
 
 .well-sm {
-	background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.5);
 }

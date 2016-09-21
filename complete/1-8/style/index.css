@@ -8,11 +8,11 @@
 }
 
 img {
-	float: left;
+    float: left;
 }
 
 .loading {
-	width: 100%;
+    width: 100%;
     height: 100%;
     position: fixed;
     left: 0;
