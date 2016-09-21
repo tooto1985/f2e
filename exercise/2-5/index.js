@@ -1,1 +1,1 @@
-﻿$(function () { var isChecked = false; for (var i = 0; i < 5; i++) { if (i == 2) { isChecked = true; } } if (!isChecked) { alert("not checked"); } });
+﻿$(function(){var isChecked=false;for(var i=0;i<5;i++){if(i==2){isChecked=true}}if(!isChecked){alert("not checked")}})
