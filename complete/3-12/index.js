@@ -3,9 +3,9 @@
     var pagerCount = 5; //每頁顯示幾筆
     var currentIndex = 1; //目前在第幾頁
     function show(data) {
-        var $table = $("<talbe>");
+        var $tbody = $("<tbody>");
         for (var i = 0; i < data.length; i++) {
-            $table.append(
+            $tbody.append(
                 $("<tr>").append(
                     $("<td>").append(
                         $("<a>").attr("href", data[i].url).text(data[i].title)
@@ -13,7 +13,7 @@
                 )
             );
         }
-        $("#content").html($table.html());
+        $("#content").html($tbody.html());
     }
     $.getJSON("data.json", function(data) {
         json = data;
