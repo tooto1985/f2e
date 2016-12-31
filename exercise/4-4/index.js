@@ -2,7 +2,7 @@
     $("#search").keyup(function(e) {
         var value = $(this).val().trim();
         if (value) {
-            $.getJSON("http://tw.somee.com/demo/4-4/data.ashx", {
+            $.getJSON("http://tw.somee.com/demo/4-4/data/", {
                 search: value
             }, function(data) {
                 if (data.length) {
