@@ -23,4 +23,4 @@ app.use(function(req, res, next) {
 });
 app.use('/', serveIndex('./'));
 app.use(express.static("./"));
-app.listen(80);
+app.listen(3000);

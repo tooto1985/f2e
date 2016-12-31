@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/tooto1985/f2e#readme",
   "dependencies": {
+    "browser-sync": "^2.18.5",
     "express": "^4.14.0",
+    "gulp": "^3.9.1",
     "serve-index": "^1.8.0"
   }
 }
