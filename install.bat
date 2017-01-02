@@ -1,2 +1,2 @@
-npm install gulp -g
-npm install
+call npm install
+call npm install gulp -g

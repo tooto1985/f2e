@@ -2,16 +2,11 @@
   "name": "f2e",
   "version": "1.0.0",
   "description": "F2E-Example",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tooto1985/f2e.git"
   },
-  "author": "",
+  "author": "Tommy",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tooto1985/f2e/issues"
@@ -19,8 +14,6 @@
   "homepage": "https://github.com/tooto1985/f2e#readme",
   "dependencies": {
     "browser-sync": "^2.18.5",
-    "express": "^4.14.0",
-    "gulp": "^3.9.1",
-    "serve-index": "^1.8.0"
+    "gulp": "^3.9.1"
   }
 }
