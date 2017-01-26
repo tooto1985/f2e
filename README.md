@@ -13,8 +13,8 @@ git clone https://github.com/tooto1985/f2e.git
 install.bat
 ```
 
-#sync
+#run
 
 ```
-sync.bat
+run.bat
 ```

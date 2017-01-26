@@ -6,7 +6,7 @@ gulp.task("default", function() {
         server: {
             baseDir: "./",
         },
-        port:80
+        port: 80
     });
     gulp.watch("complete/**/*.*").on("change", reload);
     gulp.watch("exercise/**/*.*").on("change", reload);
