@@ -7,6 +7,6 @@
         progress += 100 / $("img").length;
         var percent = Math.round(progress) + "%";
         $(".txt").text(percent);
-        $(".bar").css("width", percent);
+        $(".bar").width(percent);
     });
 });
