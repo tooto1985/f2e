@@ -1,5 +1,5 @@
 ﻿$(function() {
-    $.getJSON("http://tw.somee.com/demo/4-6/data/", function (data) {
+    $.getJSON("/api/4-6", function (data) {
         var html = "";
         for (var i = 0; i < data.length; i++) {
             html += "<div>";

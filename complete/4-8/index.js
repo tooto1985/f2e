@@ -1,6 +1,6 @@
 ﻿$(function () {
     function sendMessage(message) {
-        $.getJSON("http://tw.somee.com/demo/4-8/data/", { name: $("#name").val(), message: message }, function(data) {
+        $.getJSON("/api/4-8", { name: $("#name").val(), message: message }, function(data) {
             if (data.length) {
                 for (var i = 0; i < data.length; i++) {
                     $(".box").append("<div>" + data[i] + "</div>");

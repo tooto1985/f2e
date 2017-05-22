@@ -2,7 +2,7 @@
     var oldder;
     var current = 0;
     function getArticle(num, fetch) {
-        $.getJSON("http://tw.somee.com/demo/4-7/data/", {
+        $.getJSON("/api/4-7", {
             fetch: fetch, //一次抓取幾筆
             num: num //抓取大於此編號
         }, function(data) {
