@@ -1,16 +1,21 @@
-var gulp = require("gulp");
-var gulpsync = require("gulp-sync");
-var gulpLoadPlugins = require("gulp-load-plugins");
-var rename = require("gulp-rename");
-var uglify = require("gulp-uglify");
+var browserSync = require("browser-sync").create();
 var bom = require("gulp-bom");
-var sourcemaps = require("gulp-sourcemaps");
-var plumber = require("gulp-plumber");
-var debug = require("gulp-debug");
 var chokidar = require('chokidar');
-gulpsync(gulp);
-var $ = gulpLoadPlugins();
+var debug = require("gulp-debug");
+var gulp = require("gulp");
+var gulpLoadPlugins = require("gulp-load-plugins");
+var gulpsync = require("gulp-sync");
+var plumber = require("gulp-plumber");
+var proxy = require('proxy-middleware');
+var rename = require("gulp-rename");
+var sourcemaps = require("gulp-sourcemaps");
+var uglify = require("gulp-uglify");
+var url = require('url');
+var reload = browserSync.reload;
 var path = ["complete/**/*.es6.js", "exercise/**/*.es6.js"];
+var $ = gulpLoadPlugins();
+gulpsync(gulp);
+
 function babel(path) {
     return gulp.src(path)
         .pipe(plumber()) // onerror don't stop
@@ -33,16 +38,19 @@ gulp.task("babel", () => {
     return babel(path);
 });
 gulp.task("default", ["babel", "browserSync"]);
-var browserSync = require("browser-sync").create();
-var reload = browserSync.reload;
+
 gulp.task("browserSync", function () {
+    var proxyOptions = url.parse('http://localhost:3000/api');
+    proxyOptions.route = '/api';
     browserSync.init({
         server: {
             baseDir: "./",
-            directory: true
+            directory: true,
+            middleware: [proxy(proxyOptions)]
         },
         port: 80,
-        browser: "chrome"
+        browser: "chrome",
+        
     });
     chokidar.watch("complete/**/*.es6.js").on("all", function (type, file) {
         babel(file);
