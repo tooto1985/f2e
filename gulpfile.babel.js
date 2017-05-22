@@ -10,7 +10,7 @@ var debug = require("gulp-debug");
 var chokidar = require('chokidar');
 gulpsync(gulp);
 var $ = gulpLoadPlugins();
-var path = ["complete/**/*.es6.js","exercise/**/*.es6.js"];
+var path = ["complete/**/*.es6.js", "exercise/**/*.es6.js"];
 function babel(path) {
     return gulp.src(path)
         .pipe(plumber()) // onerror don't stop
@@ -32,22 +32,24 @@ function babel(path) {
 gulp.task("babel", () => {
     return babel(path);
 });
-gulp.task("default", ["babel","browserSync"]);
+gulp.task("default", ["babel", "browserSync"]);
 var browserSync = require("browser-sync").create();
 var reload = browserSync.reload;
-gulp.task("browserSync", function() {
+gulp.task("browserSync", function () {
     browserSync.init({
         server: {
             baseDir: "./",
+            directory: true
         },
-        port: 80
+        port: 80,
+        browser: "chrome"
     });
-    chokidar.watch("complete/**/*.es6.js").on("all", function(type, file) {
+    chokidar.watch("complete/**/*.es6.js").on("all", function (type, file) {
         babel(file);
     });
-    chokidar.watch("exercise/**/*.es6.js").on("all", function(type, file) {
+    chokidar.watch("exercise/**/*.es6.js").on("all", function (type, file) {
         babel(file);
-    });    
-    gulp.watch("complete/**/*.*").on("change", reload );
-    gulp.watch("exercise/**/*.*").on("change", reload );
+    });
+    gulp.watch("complete/**/*.*").on("change", reload);
+    gulp.watch("exercise/**/*.*").on("change", reload);
 });
