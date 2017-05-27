@@ -2,5 +2,6 @@
 {
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 5000,
-    "editor.minimap.enabled": true
+    "editor.minimap.enabled": true,
+    "terminal.integrated.fontFamily": "Roboto Mono for Powerline"
 }

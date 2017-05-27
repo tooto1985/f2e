@@ -67,9 +67,7 @@ gulp.task("browserSync", function () {
             directory: true,
             middleware: [proxy(proxyOptions)]
         },
-        port: 80,
-        browser: "chrome",
-
+        port: 80
     });
     chokidar.watch("complete/**/*.es6.js").on("all", function (type, file) {
         babel(file);
