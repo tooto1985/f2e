@@ -10,9 +10,9 @@ var proxy = require('proxy-middleware');
 var rename = require("gulp-rename");
 var sourcemaps = require("gulp-sourcemaps");
 var uglify = require("gulp-uglify");
+var sass = require('gulp-sass');
 var url = require('url');
 var reload = browserSync.reload;
-var path = ["complete/**/*.es6.js", "exercise/**/*.es6.js"];
 var $ = gulpLoadPlugins();
 gulpsync(gulp);
 
@@ -28,16 +28,35 @@ function babel(path) {
         })) // rename .es6.js to .js
         .pipe(sourcemaps.write(".")) // sourcemap write
         .pipe(debug({
-            title: 'debug:'
+            title: 'es6:'
         })) // show filename
         .pipe(gulp.dest(file => {
             return file.base;
         })); //output file
 }
 gulp.task("babel", () => {
-    return babel(path);
+    return babel(["complete/**/*.es6.js", "exercise/**/*.es6.js"]);
 });
-gulp.task("default", ["babel", "browserSync"]);
+
+function scss(path) {
+    return gulp.src(path)
+        .pipe(sass.sync().on('error', sass.logError))
+        .pipe(rename(path => {
+            path.basename = path.basename.replace(".cscc", ".css");
+        })) // rename .cscc to .css
+        .pipe(debug({
+            title: 'scss:'
+        })) // show filename
+        .pipe(gulp.dest(file => {
+            return file.base;
+        }));
+}
+
+gulp.task('sass', function () {
+    return scss(["complete/**/*.scss", "exercise/**/*.scss"]);
+});
+
+gulp.task("default", ["babel", "sass", "browserSync"]);
 
 gulp.task("browserSync", function () {
     var proxyOptions = url.parse('http://localhost:3000/api');
@@ -50,13 +69,19 @@ gulp.task("browserSync", function () {
         },
         port: 80,
         browser: "chrome",
-        
+
     });
     chokidar.watch("complete/**/*.es6.js").on("all", function (type, file) {
         babel(file);
     });
     chokidar.watch("exercise/**/*.es6.js").on("all", function (type, file) {
         babel(file);
+    });
+    chokidar.watch("complete/**/*.scss").on("all", function (type, file) {
+        scss(file);
+    });
+    chokidar.watch("exercise/**/*.scss").on("all", function (type, file) {
+        scss(file);
     });
     gulp.watch("complete/**/*.*").on("change", reload);
     gulp.watch("exercise/**/*.*").on("change", reload);
