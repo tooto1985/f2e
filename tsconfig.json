@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "commonjs", // 使用哪種模組
+        "noImplicitAny": false, // 是否不允許使用 any
+        "removeComments": true, // 是否移除 comment
+        "sourceMap": true // 是否使用 sourceMap
+    },
+    // "files"選項與"exclude"選項不可同時使用。如果同時指定2個設定，只有"files"會生效
+    "exclude": [ // 排除的目錄       
+        "node_modules"
+    ] //,
+    // "files": [ // 包含的檔案
+    //     "app.ts"
+    // ]
+}
