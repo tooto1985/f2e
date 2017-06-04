@@ -1,7 +1,7 @@
 ﻿$(function() {
     $("#name").keyup(function() {
         $("#status").removeClass().addClass("loading");
-        $.getJSON("http://tw.somee.com/demo/4-2/data/", { username: $(this).val() }, function (data) {
+        $.getJSON("/api/4-2", { username: $(this).val() }, function (data) {
             if (data) {
                 $("#status").removeClass().addClass("no");
             } else {
@@ -10,7 +10,7 @@
         });
     });
     $("#register").click(function() {
-        $.getJSON("http://tw.somee.com/demo/4-2/data/", { username: $("#name").val(), isregister: true }, function (data) {
+        $.getJSON("/api/4-2", { username: $("#name").val(), isregister: true }, function (data) {
             if (data) {
                 alert("註冊成功!");
             } else {
