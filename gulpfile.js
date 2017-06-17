@@ -1,3 +1,4 @@
+var defaultPage = require("./default-page");
 var browserSync = require("browser-sync").create();
 var bom = require("gulp-bom");
 var chokidar = require('chokidar');
@@ -65,9 +66,9 @@ gulp.task("browserSync", function () {
         server: {
             baseDir: "./",
             directory: true,
-            middleware: [proxy(proxyOptions)]
+            middleware: [proxy(proxyOptions), defaultPage]
         },
-        port: 80
+        port: 8080
     });
     chokidar.watch("complete/**/*.es6.js").on("all", function (type, file) {
         babel(file);
