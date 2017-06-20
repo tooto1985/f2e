@@ -14,7 +14,6 @@
         }
         $(".inbox").html(html);
         $(".navi").html(navi);
-        //$(".scrollable").scrollable({ circular: true }).autoscroll({ interval: 2000 }).navigator();
         $(".inbox").append($(".inbox>div").first().clone());
         var index = 0;
         function run() {

@@ -7,7 +7,6 @@
             html += "</div>";
         }
         $(".inbox").html(html);
-        //$(".scrollable").scrollable({ circular: true }).autoscroll({ interval: 2000 });
         $(".inbox").append($(".inbox>div").first().clone());
         var index = 0;
         function run() {
