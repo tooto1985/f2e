@@ -1,8 +1,6 @@
 ﻿$(function() {
     function getIndex(index,length) {
-        if (index < 0) {
-            index = length - 1;
-        } else if (index >= length) {
+        if (index >= length) {
             index = 0;
         }
         return index;
@@ -27,8 +25,7 @@
             index = getIndex(index,$(".list>a").length);
             var top = $(".list>a").eq(index).addClass("selected").position().top;
             $(".list").scrollTop(getTop(index,top));
-        }
-        if (e.keyCode == 13) {
+        } else if (e.keyCode == 13) {
             $("a.selected").click();
         }
     });

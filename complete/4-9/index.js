@@ -4,9 +4,9 @@
             $.getJSON("/api/4-9", function(data) {
                 if (data.length) {
                     for (var i = 0; i < data.length; i++) {
-                        $(".box").append("<div>" + data[i] + "</div>");
+                        $(".content").append("<div>" + data[i] + "</div>");
                     }
-                    $(".box").animate({ "scrollTop": $(".box").prop("scrollHeight") - $(".box").height() }, 200);
+                    $(".box").animate({ "scrollTop": $(".content").height() - $(".box").height() }, 200);
                 }
                 sendMessage();
             });
