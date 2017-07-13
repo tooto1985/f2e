@@ -71,7 +71,7 @@ gulp.task("browserSync", function () {
         server: {
             baseDir: "./",
             directory: true,
-            middleware: [proxy(proxyOptions), defaultPage]
+            middleware: [proxy(proxyOptions), defaultPage("index.html")]
         },
         port: 8080
     });
