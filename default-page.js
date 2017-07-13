@@ -1,13 +1,12 @@
-
 var fs = require("fs");
 var crypto = require("crypto");
 module.exports = function (req, res, next) {
-    if (/^\/(complete|exercise)\/[0-9]+-[0-9]+$/i.test(req.url)) {
+    if (req.url.lastIndexOf("/") !== req.url.length - 1 && !(req.url.split("/").pop().indexOf(".") > -1) ) {
         res.writeHead(301, {
             location: req.url + "/"
         });
         res.end();
-    } else if (/^\/(complete|exercise)\/[0-9]+-[0-9]+\/$/i.test(req.url)) {
+    } else if (req.url.lastIndexOf("/") === req.url.length - 1) {
         fs.exists("." + req.url + "index.html", function (exists) {
             if (exists) {
                 var data = fs.readFileSync("." + req.url + "index.html");
@@ -19,7 +18,7 @@ module.exports = function (req, res, next) {
                 }
                 res.writeHead(200, {
                     "content-type": "text/html",
-                    "Etag":hash
+                    "Etag": hash
                 });
                 res.write(data);
                 res.end();
