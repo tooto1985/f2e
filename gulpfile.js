@@ -1,3 +1,4 @@
+var defaultPage = require("./default-page");
 var browserSync = require("browser-sync").create();
 var bom = require("gulp-bom");
 var chokidar = require('chokidar');
@@ -14,6 +15,7 @@ var sass = require('gulp-sass');
 var url = require('url');
 var reload = browserSync.reload;
 var $ = gulpLoadPlugins();
+var folders = ["complete", "exercise", "tester"];
 gulpsync(gulp);
 
 function babel(path) {
@@ -35,7 +37,9 @@ function babel(path) {
         })); //output file
 }
 gulp.task("babel", () => {
-    return babel(["complete/**/*.es6.js", "exercise/**/*.es6.js"]);
+    return babel(folders.map(function (a) {
+        return a + "/**/*.es6.js";
+    }));
 });
 
 function scss(path) {
@@ -53,7 +57,9 @@ function scss(path) {
 }
 
 gulp.task('sass', function () {
-    return scss(["complete/**/*.scss", "exercise/**/*.scss"]);
+    return scss(folders.map(function (a) {
+        return a + "/**/*.scss";
+    }));
 });
 
 gulp.task("default", ["babel", "sass", "browserSync"]);
@@ -65,22 +71,17 @@ gulp.task("browserSync", function () {
         server: {
             baseDir: "./",
             directory: true,
-            middleware: [proxy(proxyOptions)]
+            middleware: [proxy(proxyOptions), defaultPage("index.html")]
         },
-        port: 80
+        port: 8080
     });
-    chokidar.watch("complete/**/*.es6.js").on("all", function (type, file) {
-        babel(file);
+    folders.forEach(function (a) {
+        chokidar.watch(a + "/**/*.es6.js").on("all", function (type, file) {
+            babel(file);
+        });
+        chokidar.watch(a + "/**/*.scss").on("all", function (type, file) {
+            scss(file);
+        });
+        gulp.watch(a + "/**/*.*").on("change", reload);
     });
-    chokidar.watch("exercise/**/*.es6.js").on("all", function (type, file) {
-        babel(file);
-    });
-    chokidar.watch("complete/**/*.scss").on("all", function (type, file) {
-        scss(file);
-    });
-    chokidar.watch("exercise/**/*.scss").on("all", function (type, file) {
-        scss(file);
-    });
-    gulp.watch("complete/**/*.*").on("change", reload);
-    gulp.watch("exercise/**/*.*").on("change", reload);
 });

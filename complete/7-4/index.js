@@ -13,7 +13,7 @@
         var value = $this.val();
         $this.removeClass();
         if (value) {
-            $this.addClass(/^[a-zA-Z][12][0-9]{8}$/.test(value) && check(value) ? "yes" : "no");
+            $this.addClass(/^[a-z][12][0-9]{8}$/i.test(value) && check(value) ? "yes" : "no");
         }
     });
 });
