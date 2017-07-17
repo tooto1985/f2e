@@ -2,13 +2,13 @@
     var hours = new Date().getHours();
     /*
     if (hours < 6) {
-        $("#show").append("凌晨");
+        $("#show").text("凌晨");
     } else if (hours < 12) {
-        $("#show").append("上午");
+        $("#show").text("上午");
     } else if (hours < 18) {
-        $("#show").append("下午");
+        $("#show").text("下午");
     } else {
-        $("#show").append("傍晚");
+        $("#show").text("傍晚");
     }
     */
     
