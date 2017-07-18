@@ -15,7 +15,7 @@ var sass = require('gulp-sass');
 var url = require('url');
 var reload = browserSync.reload;
 var $ = gulpLoadPlugins();
-var folders = ["complete", "exercise", "tester"];
+var folders = ["complete", "exercise"];
 gulpsync(gulp);
 
 function babel(path) {
