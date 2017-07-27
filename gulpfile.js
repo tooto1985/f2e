@@ -11,6 +11,8 @@ var rename = require("gulp-rename");
 var sourcemaps = require("gulp-sourcemaps");
 var uglify = require("gulp-uglify");
 var sass = require("gulp-sass");
+var imagemin = require("gulp-imagemin");
+var cache = require("gulp-cache");
 var crypto = require("crypto");
 var fs = require("fs");
 var url = require("url");
@@ -66,10 +68,25 @@ function scss(path) {
         })) // show filename
         .pipe(gulp.dest(file => {
             return file.base;
-        }));
+        })); //output file
 }
 gulp.task("sass", () => {
     return scss(folders.map(a => a + "/**/*.scss"));
+});
+function image(path) {
+    return gulp.src(path)
+        .pipe(cache(imagemin({
+            optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）
+            progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
+            interlaced: true, //类型：Boolean 默认：false 隔行扫描gif进行渲染
+            multipass: true //类型：Boolean 默认：false 多次优化svg直到完全优化
+        })))
+        .pipe(gulp.dest(file => {
+            return file.base;
+        })); //output file
+}
+gulp.task("image", () => {
+    return image(folders.map(a => a + "/**/*.{png,jpg,gif,ico}"));
 });
 function defaultPage(defaultPage) {
     defaultPage = defaultPage || "index.html";
