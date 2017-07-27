@@ -1,4 +1,3 @@
-var defaultPage = require("./default-page");
 var browserSync = require("browser-sync").create();
 var bom = require("gulp-bom");
 var chokidar = require("chokidar");
@@ -12,12 +11,23 @@ var rename = require("gulp-rename");
 var sourcemaps = require("gulp-sourcemaps");
 var uglify = require("gulp-uglify");
 var sass = require("gulp-sass");
+var crypto = require("crypto");
+var fs = require("fs");
 var url = require("url");
 var reload = browserSync.reload;
 var $ = gulpLoadPlugins();
-var folders = ["complete", "exercise"];
+var folders = (folders => {
+    var names = fs.readdirSync(".");
+    for (var i = 0; i < names.length; i++) {
+        var name = names[i];
+        var state = fs.statSync("./" + name);
+        if (state.isDirectory() && name != "node_modules" && !name.startsWith(".")) {
+            folders.push(name);
+        }
+    }
+    return folders;
+})([]);
 gulpsync(gulp);
-
 function babel(path) {
     return gulp.src(path)
         .pipe(plumber()) // onerror do not stop
@@ -37,16 +47,17 @@ function babel(path) {
         })); //output file
 }
 gulp.task("babel", () => {
-    return babel(folders.map(function (a) {
-        return a + "/**/*.es6.js";
-    }));
+    return babel(folders.map(a => a + "/**/*.es6.js"));
 });
-
 function scss(path) {
     return gulp.src(path)
-        .pipe(sourcemaps.init())
-        .pipe(sass.sync({ includePaths: ["./"], errLogToConsole: true }).on("error", sass.logError))
-        .pipe(sourcemaps.write("./"))
+        .pipe(sourcemaps.init()) // sourcemap init
+        .pipe(sass.sync({
+            includePaths: ["./"], // @import modules
+            outputStyle: "compressed",  // minify css
+            errLogToConsole: true
+        }).on("error", sass.logError))
+        .pipe(sourcemaps.write("./"))  // sourcemap write
         .pipe(rename(path => {
             path.basename = path.basename.replace(".cscc", ".css");
         })) // rename .cscc to .css
@@ -57,14 +68,43 @@ function scss(path) {
             return file.base;
         }));
 }
-
-gulp.task("sass", function () {
-    return scss(folders.map(function (a) {
-        return a + "/**/*.scss";
-    }));
+gulp.task("sass", () => {
+    return scss(folders.map(a => a + "/**/*.scss"));
 });
-
-gulp.task("browserSync", function () {
+function defaultPage(defaultPage) {
+    defaultPage = defaultPage || "index.html";
+    return function (req, res, next) {
+        if (req.url.lastIndexOf("/") !== req.url.length - 1 && !(req.url.split("/").pop().indexOf(".") > -1)) {
+            res.writeHead(301, {
+                location: req.url + "/"
+            });
+            res.end();
+        } else if (req.url.lastIndexOf("/") === req.url.length - 1) {
+            fs.exists("." + req.url + defaultPage, function (exists) {
+                if (exists) {
+                    var data = fs.readFileSync("." + req.url + defaultPage);
+                    var hash = crypto.createHash('sha1').update(data).digest('base64');
+                    if (req.headers['if-none-match'] == hash) {
+                        res.writeHead(304);
+                        res.end();
+                        return;
+                    }
+                    res.writeHead(200, {
+                        "content-type": "text/html",
+                        "Etag": hash
+                    });
+                    res.write(data);
+                    res.end();
+                } else {
+                    next();
+                }
+            })
+        } else {
+            next();
+        }
+    }
+}
+gulp.task("browserSync", () => {
     var proxyOptions = url.parse("http://localhost:3000/api");
     proxyOptions.route = "/api";
     browserSync.init({
@@ -76,19 +116,16 @@ gulp.task("browserSync", function () {
         port: 8080
     });
 });
-
-gulp.task("watching", function () {
-    folders.forEach(function (a) {
-        chokidar.watch(a + "/**/*.es6.js").on("all", function (type, file) {
+gulp.task("watching", () => {
+    folders.forEach(a => {
+        chokidar.watch(a + "/**/*.es6.js").on("all", (type, file) => {
             babel(file);
         });
-        chokidar.watch(a + "/**/*.scss").on("all", function (type, file) {
+        chokidar.watch(a + "/**/*.scss").on("all", (type, file) => {
             scss(file);
         });
         gulp.watch(a + "/**/*.*").on("change", reload);
     });
 });
-
 gulp.task("default", ["babel", "sass", "browserSync", "watching"]);
-
 gulp.task("noserver", ["babel", "sass", "watching"]);
