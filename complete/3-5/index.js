@@ -14,7 +14,7 @@
         }
         $(".inbox").html(html);
         $(".navi").html(navi);
-        $(".inbox").append($(".inbox>div").first().clone());
+        $(".inbox>div").first().clone().appendTo($(".inbox"));
         var index = 0;
         function run() {
             if (!$(".inbox").is(":animated")) {
