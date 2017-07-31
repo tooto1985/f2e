@@ -13,6 +13,8 @@ var uglify = require("gulp-uglify");
 var sass = require("gulp-sass");
 var imagemin = require("gulp-imagemin");
 var cache = require("gulp-cache");
+var gulpif = require("gulp-if");
+var yargs = require("yargs").argv;
 var crypto = require("crypto");
 var fs = require("fs");
 var url = require("url");
@@ -29,18 +31,19 @@ var folders = (folders => {
     }
     return folders;
 })([]);
+var isDebug = yargs.isDebug == "true";
 gulpsync(gulp);
 function babel(path) {
     return gulp.src(path)
         .pipe(plumber()) // onerror do not stop
-        .pipe(sourcemaps.init()) // sourcemap init
+        .pipe(gulpif(!isDebug, sourcemaps.init())) // sourcemap init
         .pipe($.babel()) // ES6 to ES5
-        .pipe(uglify()) // minify js
+        .pipe(gulpif(!isDebug, uglify())) // minify js
         .pipe(bom()) // utf-8
         .pipe(rename(path => {
             path.basename = path.basename.replace(".es6", "");
         })) // rename .es6.js to .js
-        .pipe(sourcemaps.write(".")) // sourcemap write
+        .pipe(gulpif(!isDebug, sourcemaps.write("."))) // sourcemap write
         .pipe(debug({
             title: "es6:"
         })) // show filename
@@ -53,13 +56,13 @@ gulp.task("babel", () => {
 });
 function scss(path) {
     return gulp.src(path)
-        .pipe(sourcemaps.init()) // sourcemap init
+        .pipe(gulpif(!isDebug, sourcemaps.init())) // sourcemap init
         .pipe(sass.sync({
             includePaths: ["./"], // @import modules
-            outputStyle: "compressed",  // minify css
+            outputStyle: !isDebug ? "compressed" : "expanded",  // minify css
             errLogToConsole: true
         }).on("error", sass.logError))
-        .pipe(sourcemaps.write("./"))  // sourcemap write
+        .pipe(gulpif(!isDebug, sourcemaps.write("./")))  // sourcemap write
         .pipe(rename(path => {
             path.basename = path.basename.replace(".cscc", ".css");
         })) // rename .cscc to .css
