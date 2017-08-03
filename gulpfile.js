@@ -14,6 +14,7 @@ var sass = require("gulp-sass");
 var imagemin = require("gulp-imagemin");
 var cache = require("gulp-cache");
 var gulpif = require("gulp-if");
+var server = require("gulp-express");
 var yargs = require("yargs").argv;
 var crypto = require("crypto");
 var fs = require("fs");
@@ -147,5 +148,9 @@ gulp.task("watching", () => {
         gulp.watch(a + "/**/*.*").on("change", reload);
     });
 });
-gulp.task("default", ["babel", "sass", "browserSync", "watching"]);
-gulp.task("noserver", ["babel", "sass", "watching"]);
+gulp.task("api", function () {
+    server.run(["./api/app.js"]);
+});
+
+gulp.task("default", ["babel", "sass", "api", "browserSync", "watching"]);
+gulp.task("noserver", ["babel", "sass", "api", "watching"]);
