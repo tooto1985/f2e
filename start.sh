@@ -1,15 +1,15 @@
 #!/bin/bash
-npm list gulp -g
+gulp --version
 if [ "$?" -ne "0" ]
 then 
   npm install gulp -g
 fi
-npm list babel-cli -g
+babel --version
 if [ "$?" -ne "0" ]
 then 
   npm install babel-cli -g
 fi
-npm list typescript -g
+tsc --version
 if [ "$?" -ne "0" ]
 then 
   npm install typescript -g
