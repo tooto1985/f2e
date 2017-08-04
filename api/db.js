@@ -1,12 +1,12 @@
 var fs = require("fs");
 module.exports = function (jsonFileName) {
     function readFile() {
-        var data = fs.readFileSync("./api/json/" + jsonFileName + ".json").toString();
+        var data = fs.readFileSync("./json/" + jsonFileName + ".json").toString();
         return JSON.parse(data);
     }
 
     function writeFile(data) {
-        fs.writeFileSync("./api/json/" + jsonFileName + ".json", JSON.stringify(data, null, "\t"));
+        fs.writeFileSync("./json/" + jsonFileName + ".json", JSON.stringify(data, null, "\t"));
     }
 
     this.insert = function (insertObject, success, error) {

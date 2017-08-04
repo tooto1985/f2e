@@ -80,10 +80,10 @@ gulp.task("sass", () => {
 function image(path) {
     return gulp.src(path)
         .pipe(cache(imagemin({
-            optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）
-            progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
-            interlaced: true, //类型：Boolean 默认：false 隔行扫描gif进行渲染
-            multipass: true //类型：Boolean 默认：false 多次优化svg直到完全优化
+            optimizationLevel: 5, //類型：Number 預設：3 取值範圍：0-7（優化等級）
+            progressive: true, //類型：Boolean 預設：false 無損壓縮jpg圖片
+            interlaced: true, //類型：Boolean 預設：false 隔行掃描gif進行渲染
+            multipass: true //類型：Boolean 預設：false 多次優化svg直到完全優化
         })))
         .pipe(gulp.dest(file => {
             return file.base;
@@ -149,8 +149,10 @@ gulp.task("watching", () => {
     });
 });
 gulp.task("api", function () {
-    server.run(["./api/app.js"]);
+    server.run(["app.js"], {
+        cwd: "./api/"
+    }, false);
 });
 
 gulp.task("default", ["babel", "sass", "api", "browserSync", "watching"]);
-gulp.task("noserver", ["babel", "sass", "api", "watching"]);
+gulp.task("noserver", ["babel", "sass", "watching"]);
