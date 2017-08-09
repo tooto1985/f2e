@@ -1,11 +1,11 @@
-﻿$(function() {
-    $("#name").keyup(function() {
-        $("#status").removeClass().addClass("loading");
+﻿$(function () {
+    $("#name").keyup(function () {
+        $("#status").attr("class", "loading");
         $.getJSON("/api/4-1", { username: $(this).val() }, function (data) {
             if (data) {
-                $("#status").removeClass().addClass("no");
+                $("#status").attr("class", "no");
             } else {
-                $("#status").removeClass().addClass("ok");
+                $("#status").attr("class", "ok");
             }
         });
     });
