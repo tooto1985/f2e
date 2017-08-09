@@ -19,9 +19,9 @@
         var $this = $(this);
         $this.siblings().removeClass();
         if ($this.hasClass("up")) {
-            $this.removeClass().addClass("down");
+            $this.attr("class", "down");
         } else {
-            $this.removeClass().addClass("up");
+            $this.attr("class", "up");
         }
         var key = $this.data("key");
         var direction = $this.attr("class");
