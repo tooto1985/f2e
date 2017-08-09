@@ -1,14 +1,14 @@
 @echo off
-call npm list gulp -g
-IF ERRORLEVEL 1 (
+call gulp --version
+IF NOT %ERRORLEVEL% == 0 (
     call npm install gulp -g
 )
-call npm list babel-cli -g
-IF ERRORLEVEL 1 (
+call babel --version
+IF NOT %ERRORLEVEL% == 0 (
     call npm install babel-cli -g
 )
-call npm list typescript -g
-IF ERRORLEVEL 1 (
+call tsc --version
+IF NOT %ERRORLEVEL% == 0 (
     call npm install typescript -g
 )
 IF NOT EXIST node_modules (
