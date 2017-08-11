@@ -11,6 +11,11 @@ var rename = require("gulp-rename");
 var sourcemaps = require("gulp-sourcemaps");
 var uglify = require("gulp-uglify");
 var sass = require("gulp-sass");
+var imagemin = require("gulp-imagemin");
+var cache = require("gulp-cache");
+var gulpif = require("gulp-if");
+var server = require("gulp-express");
+var yargs = require("yargs").argv;
 var crypto = require("crypto");
 var fs = require("fs");
 var url = require("url");
@@ -27,18 +32,19 @@ var folders = (folders => {
     }
     return folders;
 })([]);
+var isDebug = yargs.isDebug == "true";
 gulpsync(gulp);
 function babel(path) {
     return gulp.src(path)
         .pipe(plumber()) // onerror do not stop
-        .pipe(sourcemaps.init()) // sourcemap init
+        .pipe(gulpif(!isDebug, sourcemaps.init())) // sourcemap init
         .pipe($.babel()) // ES6 to ES5
-        .pipe(uglify()) // minify js
+        .pipe(gulpif(!isDebug, uglify())) // minify js
         .pipe(bom()) // utf-8
         .pipe(rename(path => {
             path.basename = path.basename.replace(".es6", "");
         })) // rename .es6.js to .js
-        .pipe(sourcemaps.write(".")) // sourcemap write
+        .pipe(gulpif(!isDebug, sourcemaps.write("."))) // sourcemap write
         .pipe(debug({
             title: "es6:"
         })) // show filename
@@ -51,13 +57,13 @@ gulp.task("babel", () => {
 });
 function scss(path) {
     return gulp.src(path)
-        .pipe(sourcemaps.init()) // sourcemap init
+        .pipe(gulpif(!isDebug, sourcemaps.init())) // sourcemap init
         .pipe(sass.sync({
             includePaths: ["./"], // @import modules
-            outputStyle: "compressed",  // minify css
+            outputStyle: !isDebug ? "compressed" : "expanded",  // minify css
             errLogToConsole: true
         }).on("error", sass.logError))
-        .pipe(sourcemaps.write("./"))  // sourcemap write
+        .pipe(gulpif(!isDebug, sourcemaps.write("./")))  // sourcemap write
         .pipe(rename(path => {
             path.basename = path.basename.replace(".cscc", ".css");
         })) // rename .cscc to .css
@@ -66,10 +72,25 @@ function scss(path) {
         })) // show filename
         .pipe(gulp.dest(file => {
             return file.base;
-        }));
+        })); //output file
 }
 gulp.task("sass", () => {
     return scss(folders.map(a => a + "/**/*.scss"));
+});
+function image(path) {
+    return gulp.src(path)
+        .pipe(cache(imagemin({
+            optimizationLevel: 5, //類型：Number 預設：3 取值範圍：0-7（優化等級）
+            progressive: true, //類型：Boolean 預設：false 無損壓縮jpg圖片
+            interlaced: true, //類型：Boolean 預設：false 隔行掃描gif進行渲染
+            multipass: true //類型：Boolean 預設：false 多次優化svg直到完全優化
+        })))
+        .pipe(gulp.dest(file => {
+            return file.base;
+        })); //output file
+}
+gulp.task("image", () => {
+    return image(folders.map(a => a + "/**/*.{png,jpg,gif,ico}"));
 });
 function defaultPage(defaultPage) {
     defaultPage = defaultPage || "index.html";
@@ -127,5 +148,11 @@ gulp.task("watching", () => {
         gulp.watch(a + "/**/*.*").on("change", reload);
     });
 });
-gulp.task("default", ["babel", "sass", "browserSync", "watching"]);
+gulp.task("api", function () {
+    server.run(["app.js"], {
+        cwd: "./api/"
+    }, false);
+});
+
+gulp.task("default", ["babel", "sass", "api", "browserSync", "watching"]);
 gulp.task("noserver", ["babel", "sass", "watching"]);
