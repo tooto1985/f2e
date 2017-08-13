@@ -7,7 +7,7 @@
             html += "</div>";
         }
         $(".inbox").html(html);
-        $(".inbox").append($(".inbox>div").first().clone());
+        $(".inbox>div").first().clone().appendTo($(".inbox"));
         var index = 0;
         function run() {
             $(".inbox").animate({left: "-=800"}, function() {
