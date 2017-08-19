@@ -1,28 +1,14 @@
 var browserSync = require("browser-sync").create();
-var bom = require("gulp-bom");
 var chokidar = require("chokidar");
-var debug = require("gulp-debug");
 var gulp = require("gulp");
-var gulpLoadPlugins = require("gulp-load-plugins");
-var gulpsync = require("gulp-sync");
-var plumber = require("gulp-plumber");
+var $ = require("gulp-load-plugins")();
 var proxy = require("proxy-middleware");
-var rename = require("gulp-rename");
-var sourcemaps = require("gulp-sourcemaps");
-var uglify = require("gulp-uglify");
-var sass = require("gulp-sass");
-var imagemin = require("gulp-imagemin");
-var cache = require("gulp-cache");
-var gulpif = require("gulp-if");
-var server = require("gulp-express");
 var yargs = require("yargs").argv;
 var find = require("find");
 var crypto = require("crypto");
 var path = require("path");
 var fs = require("fs");
 var url = require("url");
-var reload = browserSync.reload;
-var $ = gulpLoadPlugins();
 var folders = (folders => {
     var names = fs.readdirSync(".");
     for (var i = 0; i < names.length; i++) {
@@ -35,19 +21,19 @@ var folders = (folders => {
     return folders;
 })([]);
 var isDebug = yargs.isDebug == "true";
-gulpsync(gulp);
+$.sync(gulp);
 function babel(path) {
     return gulp.src(path)
-        .pipe(plumber()) // onerror do not stop
-        .pipe(gulpif(!isDebug, sourcemaps.init())) // sourcemap init
+        .pipe($.plumber()) // onerror do not stop
+        .pipe($.if(!isDebug, $.sourcemaps.init())) // sourcemap init
         .pipe($.babel()) // ES6 to ES5
-        .pipe(gulpif(!isDebug, uglify())) // minify js
-        .pipe(bom()) // utf-8
-        .pipe(rename(path => {
+        .pipe($.if(!isDebug, $.uglify())) // minify js
+        .pipe($.bom()) // utf-8
+        .pipe($.rename(path => {
             path.basename = path.basename.replace(".es6", "");
         })) // rename .es6.js to .js
-        .pipe(gulpif(!isDebug, sourcemaps.write("."))) // sourcemap write
-        .pipe(debug({
+        .pipe($.if(!isDebug, $.sourcemaps.write("."))) // sourcemap write
+        .pipe($.debug({
             title: "es6:"
         })) // show filename
         .pipe(gulp.dest(file => {
@@ -59,17 +45,17 @@ gulp.task("babel", () => {
 });
 function scss(path) {
     return gulp.src(path)
-        .pipe(gulpif(!isDebug, sourcemaps.init())) // sourcemap init
-        .pipe(sass.sync({
+        .pipe($.if(!isDebug, $.sourcemaps.init())) // sourcemap init
+        .pipe($.sass.sync({
             includePaths: ["./"], // @import modules
             outputStyle: !isDebug ? "compressed" : "expanded",  // minify css
             errLogToConsole: true
-        }).on("error", sass.logError))
-        .pipe(gulpif(!isDebug, sourcemaps.write("./")))  // sourcemap write
-        .pipe(rename(path => {
+        }).on("error", $.sass.logError))
+        .pipe($.if(!isDebug, $.sourcemaps.write("./")))  // sourcemap write
+        .pipe($.rename(path => {
             path.basename = path.basename.replace(".cscc", ".css");
         })) // rename .cscc to .css
-        .pipe(debug({
+        .pipe($.debug({
             title: "scss:"
         })) // show filename
         .pipe(gulp.dest(file => {
@@ -81,7 +67,7 @@ gulp.task("sass", () => {
 });
 function image(path) {
     return gulp.src(path)
-        .pipe(cache(imagemin({
+        .pipe($.cache($.imagemin({
             optimizationLevel: 5, //類型：Number 預設：3 取值範圍：0-7（優化等級）
             progressive: true, //類型：Boolean 預設：false 無損壓縮jpg圖片
             interlaced: true, //類型：Boolean 預設：false 隔行掃描gif進行渲染
@@ -156,12 +142,12 @@ gulp.task("watching", () => {
                 });
             }
         });
-        gulp.watch(a + "/**/*.*").on("error", () => { }).on("change", reload);
+        gulp.watch(a + "/**/*.*").on("error", () => { }).on("change", browserSync.reload);
     });
 });
 gulp.task("api", function () {
     if (fs.existsSync("./api/app.js")) {
-        server.run(["app.js"], {
+        $.express.run(["app.js"], {
             cwd: "./api/"
         }, false);
     }
