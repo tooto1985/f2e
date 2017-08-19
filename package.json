@@ -18,6 +18,7 @@
     "chokidar": "^1.7.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
+    "find": "^0.2.7",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-bom": "^1.0.0",

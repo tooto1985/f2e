@@ -16,7 +16,9 @@ var cache = require("gulp-cache");
 var gulpif = require("gulp-if");
 var server = require("gulp-express");
 var yargs = require("yargs").argv;
+var find = require("find");
 var crypto = require("crypto");
+var path = require("path");
 var fs = require("fs");
 var url = require("url");
 var reload = browserSync.reload;
@@ -139,19 +141,30 @@ gulp.task("browserSync", () => {
 });
 gulp.task("watching", () => {
     folders.forEach(a => {
-        chokidar.watch(a + "/**/*.es6.js").on("all", (type, file) => {
+        chokidar.watch(a + "/**/*.es6.js").on("error", () => { }).on("all", (type, file) => {
             babel(file);
         });
-        chokidar.watch(a + "/**/*.scss").on("all", (type, file) => {
+        chokidar.watch(a + "/**/*.scss").on("error", () => { }).on("all", (type, file) => {
             scss(file);
+            if (path.basename(file).startsWith("_")) {
+                find.file(/^[^\_]*\.scss$/, path.join(__dirname, a), function (files) {
+                    files.forEach(function (file) {
+                        setTimeout(function () {
+                            scss("./" + path.relative(path.join(__dirname), file));
+                        }, 100);
+                    });
+                });
+            }
         });
-        gulp.watch(a + "/**/*.*").on("change", reload);
+        gulp.watch(a + "/**/*.*").on("error", () => { }).on("change", reload);
     });
 });
 gulp.task("api", function () {
-    server.run(["app.js"], {
-        cwd: "./api/"
-    }, false);
+    if (fs.existsSync("./api/app.js")) {
+        server.run(["app.js"], {
+            cwd: "./api/"
+        }, false);
+    }
 });
 
 gulp.task("default", ["babel", "sass", "api", "browserSync", "watching"]);
