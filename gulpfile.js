@@ -22,6 +22,7 @@ var folders = (folders => {
 })([]);
 var isDebug = yargs.isDebug == "true";
 $.sync(gulp);
+
 function babel(path) {
     return gulp.src(path)
         .pipe($.plumber()) // onerror do not stop
@@ -43,15 +44,16 @@ function babel(path) {
 gulp.task("babel", () => {
     return babel(folders.map(a => a + "/**/*.es6.js"));
 });
+
 function scss(path) {
     return gulp.src(path)
         .pipe($.if(!isDebug, $.sourcemaps.init())) // sourcemap init
         .pipe($.sass.sync({
             includePaths: ["./"], // @import modules
-            outputStyle: !isDebug ? "compressed" : "expanded",  // minify css
+            outputStyle: !isDebug ? "compressed" : "expanded", // minify css
             errLogToConsole: true
         }).on("error", $.sass.logError))
-        .pipe($.if(!isDebug, $.sourcemaps.write("./")))  // sourcemap write
+        .pipe($.if(!isDebug, $.sourcemaps.write("./"))) // sourcemap write
         .pipe($.rename(path => {
             path.basename = path.basename.replace(".cscc", ".css");
         })) // rename .cscc to .css
@@ -65,6 +67,7 @@ function scss(path) {
 gulp.task("sass", () => {
     return scss(folders.map(a => a + "/**/*.scss"));
 });
+
 function image(path) {
     return gulp.src(path)
         .pipe($.cache($.imagemin({
@@ -80,16 +83,17 @@ function image(path) {
 gulp.task("image", () => {
     return image(folders.map(a => a + "/**/*.{png,jpg,gif,ico}"));
 });
+
 function defaultPage(defaultPage) {
     defaultPage = defaultPage || "index.html";
-    return function (req, res, next) {
+    return function(req, res, next) {
         if (req.url.lastIndexOf("/") !== req.url.length - 1 && !(req.url.split("/").pop().indexOf(".") > -1)) {
             res.writeHead(301, {
                 location: req.url + "/"
             });
             res.end();
         } else if (req.url.lastIndexOf("/") === req.url.length - 1) {
-            fs.exists("." + req.url + defaultPage, function (exists) {
+            fs.exists("." + req.url + defaultPage, function(exists) {
                 if (exists) {
                     var data = fs.readFileSync("." + req.url + defaultPage);
                     var hash = crypto.createHash('sha1').update(data).digest('base64');
@@ -127,25 +131,31 @@ gulp.task("browserSync", () => {
 });
 gulp.task("watching", () => {
     folders.forEach(a => {
-        chokidar.watch(a + "/**/*.es6.js").on("error", () => { }).on("all", (type, file) => {
+        chokidar.watch(a + "/**/*.es6.js").on("error", () => {}).on("all", (type, file) => {
             babel(file);
         });
-        chokidar.watch(a + "/**/*.scss").on("error", () => { }).on("all", (type, file) => {
+        chokidar.watch(a + "/**/*.scss").on("error", () => {}).on("all", (type, file) => {
             scss(file);
             if (path.basename(file).startsWith("_")) {
-                find.file(/^[^\_]*\.scss$/, path.join(__dirname, a), function (files) {
-                    files.forEach(function (file) {
-                        setTimeout(function () {
+                find.file(/^[^\_]*\.scss$/, path.join(__dirname, a), function(files) {
+                    files.forEach(function(file) {
+                        setTimeout(function() {
                             scss("./" + path.relative(path.join(__dirname), file));
-                        }, 100);
+                        }, 250);
                     });
                 });
             }
         });
-        gulp.watch(a + "/**/*.*").on("error", () => { }).on("change", browserSync.reload);
+        let id;
+        gulp.watch(a + "/**/*.*").on("error", () => {}).on("change", function() {
+            clearTimeout(id);
+            id = setTimeout(function() {
+                browserSync.reload();
+            }, 500);
+        });
     });
 });
-gulp.task("api", function () {
+gulp.task("api", function() {
     if (fs.existsSync("./api/app.js")) {
         $.express.run(["app.js"], {
             cwd: "./api/"
