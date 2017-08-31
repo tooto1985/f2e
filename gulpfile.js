@@ -23,15 +23,26 @@ var folders = (folders => {
 var isDebug = yargs.isDebug == "true";
 $.sync(gulp);
 
-function babel(path) {
-    return gulp.src(path)
+function babel(pathname) {
+    return gulp.src(pathname)
         .pipe($.plumber()) // onerror do not stop
         .pipe($.if(!isDebug, $.sourcemaps.init())) // sourcemap init
         .pipe($.babel()) // ES6 to ES5
+        .pipe($.if((() => {
+            if (!/,|\*/g.test(pathname)) {
+                var data = fs.readFileSync(path.join(__dirname, pathname)).toString();
+                data = data.replace(/([\/]{2}.*)|(\/\*[\s\*]*.*[\s\*]*\*\/)/gm, ""); //remove comments
+                return /require\(.{3,}\)/g.test(data); //find require
+            }
+            return false;
+        })(), $.browserify({
+            insertGlobals: true,
+            debug: false /*!gulp.env.production*/
+        })))
         .pipe($.if(!isDebug, $.uglify())) // minify js
         .pipe($.bom()) // utf-8
-        .pipe($.rename(path => {
-            path.basename = path.basename.replace(".es6", "");
+        .pipe($.rename(pathname => {
+            pathname.basename = pathname.basename.replace(".es6", "");
         })) // rename .es6.js to .js
         .pipe($.if(!isDebug, $.sourcemaps.write("."))) // sourcemap write
         .pipe($.debug({
@@ -41,12 +52,9 @@ function babel(path) {
             return file.base;
         })); //output file
 }
-gulp.task("babel", () => {
-    return babel(folders.map(a => a + "/**/*.es6.js"));
-});
 
-function scss(path) {
-    return gulp.src(path)
+function scss(pathname) {
+    return gulp.src(pathname)
         .pipe($.if(!isDebug, $.sourcemaps.init())) // sourcemap init
         .pipe($.sass.sync({
             includePaths: ["./"], // @import modules
@@ -54,8 +62,8 @@ function scss(path) {
             errLogToConsole: true
         }).on("error", $.sass.logError))
         .pipe($.if(!isDebug, $.sourcemaps.write("./"))) // sourcemap write
-        .pipe($.rename(path => {
-            path.basename = path.basename.replace(".cscc", ".css");
+        .pipe($.rename(pathname => {
+            pathname.basename = pathname.basename.replace(".cscc", ".css");
         })) // rename .cscc to .css
         .pipe($.debug({
             title: "scss:"
@@ -64,12 +72,9 @@ function scss(path) {
             return file.base;
         })); //output file
 }
-gulp.task("sass", () => {
-    return scss(folders.map(a => a + "/**/*.scss"));
-});
 
-function image(path) {
-    return gulp.src(path)
+function image(pathname) {
+    return gulp.src(pathname)
         .pipe($.cache($.imagemin({
             optimizationLevel: 5, //類型：Number 預設：3 取值範圍：0-7（優化等級）
             progressive: true, //類型：Boolean 預設：false 無損壓縮jpg圖片
@@ -111,11 +116,11 @@ function defaultPage(defaultPage) {
                 } else {
                     next();
                 }
-            })
+            });
         } else {
             next();
         }
-    }
+    };
 }
 gulp.task("browserSync", () => {
     var proxyOptions = url.parse("http://localhost:3000/api");
@@ -141,17 +146,17 @@ gulp.task("watching", () => {
                     files.forEach(function(file) {
                         setTimeout(function() {
                             scss("./" + path.relative(path.join(__dirname), file));
-                        }, 250);
+                        }, 50);
                     });
                 });
             }
         });
-        let id;
+        var id;
         gulp.watch(a + "/**/*.*").on("error", () => {}).on("change", function() {
             clearTimeout(id);
             id = setTimeout(function() {
                 browserSync.reload();
-            }, 500);
+            }, 1000);
         });
     });
 });
@@ -162,6 +167,5 @@ gulp.task("api", function() {
         }, false);
     }
 });
-
-gulp.task("default", ["babel", "sass", "api", "browserSync", "watching"]);
-gulp.task("noserver", ["babel", "sass", "watching"]);
+gulp.task("default", ["api", "browserSync", "watching"]);
+gulp.task("noserver", ["watching"]);

@@ -22,6 +22,7 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-bom": "^1.0.0",
+    "gulp-browserify": "^0.5.1",
     "gulp-cache": "^0.4.6",
     "gulp-debug": "^2.1.2",
     "gulp-express": "^0.3.5",
