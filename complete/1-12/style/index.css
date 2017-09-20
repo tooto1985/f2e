@@ -31,8 +31,9 @@ h3 {
     width: 162px;
     height: 43px;
     background-image:url(../images/register-button.png);
+    opacity:0.5;
 }
 
-#register.off {
-    opacity:0.5;
+#checkbox:checked ~ #register {
+    opacity:1;
 }

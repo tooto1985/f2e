@@ -7,14 +7,14 @@
 git clone https://github.com/tooto1985/f2e.git
 ```
 
-#install
+#start
 
+Windows:
 ```
-install.bat
+start.bat
 ```
 
-#run
-
+Mac, Linux:
 ```
-run.bat
+bash start.sh
 ```

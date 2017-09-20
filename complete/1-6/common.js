@@ -2,10 +2,10 @@
     $(".menu>a").click(function(e) {
         $(".menu>a.selected").removeClass();
         $(".content").load($(this).addClass("selected").attr("href"));
-        location.hash = $(this).index();
+        location.hash = $(this).text();
         e.preventDefault();
-    }).eq(location.hash.substr(1)).click();
+    }).filter(":contains('" + (location.hash.substr(1) || $(".menu>a").first().text()) + "')").click();
     $(window).on("hashchange", function() {
-        $(".menu>a").eq(location.hash.substr(1)).click();
+        $(".menu>a").filter(":contains('" + (location.hash.substr(1) || $(".menu>a").first().text()) + "')").click();
     });
 });
