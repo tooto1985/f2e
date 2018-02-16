@@ -2,7 +2,7 @@
     $(".menu>a").click(function(e) {
         $(".menu>a.selected").removeClass();
         $(".content").load($(this).addClass("selected").attr("href"));
-        location.hash = $(this).text();
+        location.hash = $(this).attr("href");
         e.preventDefault();
-    }).filter(":contains('" + (location.hash.substr(1) || $(".menu>a").first().text()) + "')").click();
+    }).filter("[href='" + (location.hash.substr(1) || $(".menu>a").attr("href")) + "']").click();
 });
