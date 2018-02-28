@@ -1,12 +1,7 @@
 ﻿$(function() {
     $(".menu").load("Menu.html", function() {
-        $("a").each(function() {
-          if(this.pathname == location.pathname) {
-              $(this).addClass("selected");
-          }
-        });
-        if ($("a").is(".selected") == false) {
-            $("a").first().addClass("selected");
-        }
+        var url = location.href;
+        var href = url.substr(url.lastIndexOf("/") + 1);
+        $("a[href='" + (href || "index.html") + "']").addClass("selected");
     });
 });
