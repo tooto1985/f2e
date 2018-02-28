@@ -8,7 +8,38 @@
 }
 
 img {
-    float: left;
+    display: block;
+}
+
+.box {
+    width: 400px;
+    column-gap: 0;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 800px) {
+    .box {
+        width: 800px;
+        column-count: 2;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .box {
+        width: 1200px;
+        column-count: 3;
+    }
+}
+@media screen and (min-width: 1600px) {
+    .box {
+        width: 1600px;
+        column-count: 4;
+    }
+}
+@media screen and (min-width: 2000px) {
+    .box {
+        width: 2000px;
+        column-count: 5;
+    }
 }
 
 .loading {
