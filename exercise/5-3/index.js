@@ -5,12 +5,12 @@
         var html = "";
         if (val) {
             var show = source.filter(function(a) {
-                return a.addr.indexOf(val) > -1 || a.name.indexOf(val) > -1;
+                return a.o_tlc_agency_name.indexOf(val) > -1;
             });
             for (var i = 0; i < show.length; i++) {
                 html += "<div>";
-                html += "<div>" + show[i].name + "</div>";
-                html += "<a href=\"http://maps.google.com.tw/maps?f=q&hl=zh-TW&z=16&q=" + show[i].addr + "\" target=\"_blank\">" + show[i].addr + "</a>";
+                html += "<div>" + show[i].o_tlc_agency_name + "</div>";
+                html += "<a href=\"http://maps.google.com.tw/maps?f=q&hl=zh-TW&z=16&q=" + show[i].o_tlc_agency_address + "\" target=\"_blank\">" + show[i].o_tlc_agency_address + "</a>";
                 html += "</div>";
             }
         }

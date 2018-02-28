@@ -1,1 +1,1 @@
-﻿http://data.taipei/opendata/datalist/datasetMeta?oid=6fa3ed67-e60e-44d9-a366-ce7008e322de
+﻿http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=24c9f8fe-88db-4a6e-895c-498fbc94df94

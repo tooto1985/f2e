@@ -1,5 +1,5 @@
 ﻿$(function() {
-    $.getJSON("http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=42cfc382-f2b8-4c3a-87ad-37249634f78e", function(data) {
+    $.getJSON("http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=24c9f8fe-88db-4a6e-895c-498fbc94df94", function(data) {
         //......
     });
 });
