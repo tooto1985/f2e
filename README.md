@@ -11,10 +11,10 @@ git clone https://github.com/tooto1985/f2e.git
 
 Windows:
 ```
-start.bat
+run.bat
 ```
 
 Mac, Linux:
 ```
-bash start.sh
+bash run.sh
 ```
