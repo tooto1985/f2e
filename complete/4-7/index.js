@@ -19,8 +19,8 @@
     }
     $(window).scroll(function() {
         if (oldder != current && $(window).scrollTop() > $(document).height() - $(window).height() - 100) {
-            getArticle(current, 3);
             oldder = current;
+            getArticle(current, 3);
         }
     });
     getArticle(current, 5);
