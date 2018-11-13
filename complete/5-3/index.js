@@ -1,6 +1,6 @@
 ﻿$(function() {
     $.ajax({
-        url: "//json2jsonp.com/?url=http%3A%2F%2Fdata.taipei%2Fopendata%2Fdatalist%2FapiAccess%3Fscope%3DresourceAquire%26rid%3D24c9f8fe-88db-4a6e-895c-498fbc94df94",
+        url: "//json2jsonp.com/?url=https%3A%2F%2Fdata.taipei%2Fopendata%2Fdatalist%2FapiAccess%3Fscope%3DresourceAquire%26rid%3D24c9f8fe-88db-4a6e-895c-498fbc94df94",
         dataType: "jsonp",
         success: function(data) {
             var source = data.result.results;
