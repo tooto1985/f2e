@@ -1,6 +1,6 @@
 ﻿$(function() {
     function sendMessage(message) {
-        if (!message) {
+        if (message == undefined) {
             $.getJSON("/api/4-9", function(data) {
                 if (data.length) {
                     for (var i = 0; i < data.length; i++) {
