@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .out {
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+            position: relative;
+        }
+
+        .in {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            margin-top: -150px;
+            margin-left: 50px;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .out>.in {
+            margin-top: 50px;
+        }
+    </style>
+    <script src="../complete/js/jquery.1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            $(".out").click(function () {
+                alert("out");
+            });
+            $(".in").click(function (e) {
+                alert("in");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="out"></div>
+    <div class="in"></div>
+    <hr>
+    <div class="out">
+        <div class="in"></div>
+    </div>
+</body>
+
+</html>
