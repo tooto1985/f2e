@@ -10,9 +10,9 @@
         show(json);
     });
     $("#search").keyup(function() {
+        var search = $(this).val().toLowerCase();
         show(json.filter(function(a) {
             var name = a.name.toLowerCase();
-            var search = $("#search").val().toLowerCase();
             return name.indexOf(search) > -1;
         }));
     });
