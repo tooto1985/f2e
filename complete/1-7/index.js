@@ -1,5 +1,3 @@
-﻿$(function() {
-    $(window).load(function() {
-        $(".loading").fadeOut();
-    });
+﻿$(window).load(function() {
+    $(".loading").fadeOut();
 });
