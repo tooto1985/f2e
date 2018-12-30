@@ -39,25 +39,24 @@
         }
     });
     $("#search").keyup(function(e) {
-        if (e.keyCode != 40 && e.keyCode != 38 && e.keyCode != 13) {
-            var value = $(this).val().trim();
-            if (value) {
-                $.getJSON("/api/4-4", {
-                    search: value
-                }, function(data) {
-                    if (data.length) {
-                        var html = "";
-                        for (var i = 0; i < data.length; i++) {
-                            html += "<a>" + data[i] + "</a>";
-                        }
-                        $(".list").html(html).show();
-                    } else {
-                        $(".list").hide();
+        if ([40, 38, 13].indexOf(e.keyCode) > -1) return;
+        var value = $(this).val().trim();
+        if (value) {
+            $.getJSON("/api/4-4", {
+                search: value
+            }, function(data) {
+                if (data.length) {
+                    var html = "";
+                    for (var i = 0; i < data.length; i++) {
+                        html += "<a>" + data[i] + "</a>";
                     }
-                });
-            } else {
-                $(".list").hide();
-            }
+                    $(".list").html(html).show();
+                } else {
+                    $(".list").hide();
+                }
+            });
+        } else {
+            $(".list").hide();
         }
     });
 });
