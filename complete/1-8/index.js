@@ -1,7 +1,7 @@
-﻿$(function() {
-    $(window).load(function() {
-        $(".loading").fadeOut();
-    });
+﻿$(window).load(function() {
+    $(".loading").fadeOut();
+});
+$(function() {
     var progress = 0;
     $("img").load(function() {
         progress += 100 / $("img").length;

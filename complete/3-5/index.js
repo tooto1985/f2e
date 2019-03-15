@@ -17,16 +17,15 @@
         $(".inbox>div").first().clone().appendTo($(".inbox"));
         var index = 0;
         function run() {
-            if (!$(".inbox").is(":animated")) {
-                $(".inbox").animate({left: "-=800"}, function() {
-                    if (index >= data.length - 1) {
-                        index = -1;
-                        $(this).css("left", 0);
-                    }
-                    index++;
-                    dot();
-                });
-            }
+            if ($(".inbox").is(":animated")) return;
+            $(".inbox").animate({left: "-=800"}, function() {
+                if (index >= data.length - 1) {
+                    index = -1;
+                    $(this).css("left", 0);
+                }
+                index++;
+                dot();
+            });
         }
         var sid = setInterval(run, 2000);
         $(".inbox,.navi,.prev,.next").hover(function() {
@@ -39,16 +38,15 @@
             $(".navi>span").eq(index).addClass("active");
         }
         function back() {
-            if (!$(".inbox").is(":animated")) {
-                if (index <= 0) {
-                    index = data.length;
-                    $(".inbox").css("left", index * -800);
-                }
-                $(".inbox").animate({left: "+=800"}, function() {
-                    index--;
-                    dot();
-                });
+            if ($(".inbox").is(":animated")) return;
+            if (index <= 0) {
+                index = data.length;
+                $(".inbox").css("left", index * -800);
             }
+            $(".inbox").animate({left: "+=800"}, function() {
+                index--;
+                dot();
+            });
         }
         $(".next").click(run);
         $(".prev").click(back);
