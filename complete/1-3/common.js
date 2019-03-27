@@ -1,15 +1,11 @@
-﻿fetch("Menu.html").then(function (response) {
-    return response.text();
-}).then(function (text) {
-    var isSelected = false;
-    document.querySelector(".menu").innerHTML = text;
-    document.querySelectorAll("a").forEach(function (a) {
-        if (a.pathname == location.pathname) {
-            isSelected = true;
-            a.setAttribute("class", "selected");
-        }
-    });
-    if (isSelected == false) {
-        document.querySelectorAll("a")[0].setAttribute("class", "selected");
+﻿fetch('Menu.html').then(res => res.text()).then(text => {
+  document.querySelector('.menu').innerHTML = text
+  document.querySelectorAll('a').forEach(a => {
+    if (a.pathname == location.pathname) {
+      a.setAttribute('class', 'selected')
     }
-});
+  })
+  if (!document.querySelector('a.selected')) {
+    document.querySelectorAll('a')[0].setAttribute('class', 'selected')
+  }
+})

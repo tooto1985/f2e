@@ -1,6 +1,6 @@
-﻿fetch('header.html').then(res => res.text()).then(html => {
-    document.querySelector('#header').innerHTML = html
+﻿fetch('header.html').then(res => res.text()).then(text => {
+    document.querySelector('#header').innerHTML = text
 })
-fetch('footer.html').then(res => res.text()).then(html => {
-    document.querySelector('#footer').innerHTML = html
+fetch('footer.html').then(res => res.text()).then(text => {
+    document.querySelector('#footer').innerHTML = text
 })
