@@ -11,8 +11,8 @@
     });
     $("#search").keyup(function() {
         var search = $(this).val().toLowerCase();
-        show(json.filter(function(a) {
-            var name = a.name.toLowerCase();
+        show(json.filter(function(user) {
+            var name = user.name.toLowerCase();
             return name.indexOf(search) > -1;
         }));
     });
