@@ -27,21 +27,21 @@
     },
     methods: {
         moveTo(value) {
-            if (value === 'first') {
+            if (value === "first") {
                 this.currentIndex = 1;
-            } else if (value === 'prev') {
+            } else if (value === "prev") {
                 this.currentIndex--;
                 if (this.currentIndex < 1) {
                     this.currentIndex = 1;
                     alert("沒有上一頁了");
                 }
-            } else if (value === 'next') {
+            } else if (value === "next") {
                 this.currentIndex++;
                 if (this.currentIndex > this.maxPagerIndex) {
                     this.currentIndex = this.maxPagerIndex;
                     alert("沒有下一頁了");
                 }
-            } else if (value === 'last') {
+            } else if (value === "last") {
                 this.currentIndex = this.maxPagerIndex;
             }
         }

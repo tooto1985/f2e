@@ -2,15 +2,15 @@
     el: "#app",
     data: function() {
         return {
-            searchText: '',
+            searchText: "",
             userList: []
         }
     },
     computed: {
         userListInSearch: function() {
-            var regexp = new RegExp(this.searchText,"i");
-            return this.userList.filter(function(a) {
-                return regexp.test(a.name);
+            var regexp = new RegExp(this.searchText, "i");
+            return this.userList.filter(function(item) {
+                return regexp.test(item.name);
             }.bind(this));
         }
     },

@@ -23,7 +23,7 @@
                 this.sortDirection = "up";
             }
             this.classList.sort(function(a, b) {
-                if (this.sortDirection == "up") {
+                if (this.sortDirection === "up") {
                     if (a[this.sortKey] > b[this.sortKey]) {
                         return 1;
                     } else {
