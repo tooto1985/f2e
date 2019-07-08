@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>範例3-10</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+</head>
+<body>
+    <div id="app">
+        <h2>開課課程清單</h2>
+        <table class="bordered">
+            <thead>
+                <tr>
+                    <th style="width:94px;" @click="sortBy('date')" :class="sortKey === 'date' ? sortDirection : ''">開課日期</th>
+                    <th @click="sortBy('className')" :class="sortKey === 'className' ? sortDirection : ''">課程名稱</th>
+                    <th style="width:95px;" @click="sortBy('peoples')" :class="sortKey === 'peoples' ? sortDirection : ''">報名人數</th>
+                </tr>
+            </thead>
+            <tbody id="content">
+                <tr v-for="(item, index) in classList">
+                    <td>{{item.date}}</td>
+                    <td>{{item.className}}</td>
+                    <td>{{item.peoples}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

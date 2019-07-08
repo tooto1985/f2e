@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>範例3-12</title>
+    <link href="../css/bootstrap-combined.2.3.2.min.css" rel="stylesheet" type="text/css" />
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+</head>
+<body>
+    <div id="app">
+        <h2></h2>
+        <table class="zebra">
+            <thead>
+                <tr>
+                    <th>即時新聞</th>
+                </tr>
+            </thead>
+            <tbody id="content">
+                <tr v-for="(item, index) in pager">
+                    <td>
+                        <a :href="item.url">{{item.title}}</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td align="center">
+                        <input type="button" value="第一頁" id="first" class="btn btn-success" @click="moveTo('first')" />
+                        <input type="button" value="上一頁" id="prev" class="btn btn-success" @click="moveTo('prev')" />
+                        <input type="button" value="下一頁" id="next" class="btn btn-success" @click="moveTo('next')" />
+                        <input type="button" value="最後頁" id="last" class="btn btn-success" @click="moveTo('last')" />
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
