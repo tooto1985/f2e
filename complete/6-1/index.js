@@ -1,10 +1,6 @@
-﻿/*
-for(var i=0;i<100000;i++) {
-    if ("1"==1) {
-    }
-}
-*/
-for(var i=0;i<100000;i++) {
-    if ("1"===1) {
-    }
-}
+﻿$(function() {
+    var $content = $("#content");
+    $content.html(function(index, oldhtml) {
+        return oldhtml.replace(/(手機[^，。、]*)/g, "<span>$1</span>");
+    });
+});

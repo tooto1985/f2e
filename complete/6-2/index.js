@@ -1,10 +1,7 @@
 ﻿$(function() {
-    /*
-    if (new Date().getHours() >= 12) {
-        console.log("下午");
-    } else {
-        console.log("上午");
-    }
-    */
-    console.log(new Date().getHours() >= 12 ? "下午" : "上午");
+    var $content = $("#content");
+    $content.html(function(index, oldhtml) {
+        $("#count").text(oldhtml.match(/(手機[^，。、]*)/g).length);
+        return oldhtml.replace(/(手機[^，。、]*)/g, "<span>$1</span>");
+    });
 });

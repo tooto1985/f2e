@@ -1,8 +1,21 @@
-﻿ul.dropdown-menu
+﻿body
 {
-    display: block;
-    top: 20px;
-    left: 50%;
-    margin-left: -90px;
-    cursor: pointer;
+    text-align: center;
+    background-color: ghostwhite;
+}
+
+div
+{
+    display: inline-block;
+    text-align: left;
+}
+
+input.no
+{
+    background-color: pink;
+}
+
+input.yes
+{
+    background-color: lightgreen;
 }
