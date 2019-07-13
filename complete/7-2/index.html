@@ -17,7 +17,7 @@
                     <th style="width:95px;" @click="sortBy('peoples')" :class="sortKey === 'peoples' ? sortDirection : ''">報名人數</th>
                 </tr>
             </thead>
-            <tbody id="content">
+            <tbody>
                 <tr v-for="(item, index) in classList">
                     <td>{{item.date}}</td>
                     <td>{{item.className}}</td>

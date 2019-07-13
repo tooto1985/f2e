@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>範例7-2</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <script src="../js/vue.2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>開課課程清單</h2>
+        <table class="bordered">
+            <thead>
+                <tr>
+                    <th style="width:94px;">開課日期</th>
+                    <th>課程名稱</th>
+                    <th style="width:95px;">報名人數</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{date}}</td>
+                    <td>{{className}}</td>
+                    <td>{{peoples}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

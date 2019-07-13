@@ -8,15 +8,15 @@
 </head>
     <body>
         <div id="app">
-            <input type="text" id="search" placeholder="搜尋" v-model="searchText" />
+            <input type="text" id="search" placeholder="搜尋" />
             <div id="list">
-                <div v-for="(item, index) in userListInSearch">
+                <div>
                     <div>員工基本資料</div>
-                    <div>姓名：{{item.name}}</div>
-                    <div>年齡：{{item.age}}</div>
-                    <div>技能：{{item.skill.toString()}}</div>
-                    <div>職稱：{{item.title}}</div>
-                    <div>年資：{{item.year}}</div>
+                    <div>姓名：{{name}}</div>
+                    <div>年齡：{{age}}</div>
+                    <div>技能：{{skill}}</div>
+                    <div>職稱：{{title}}</div>
+                    <div>年資：{{year}}</div>
                 </div>
             </div>
         </div>
