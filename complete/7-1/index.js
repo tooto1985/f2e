@@ -9,8 +9,8 @@
     computed: {
         userListInSearch: function() {
             var regexp = new RegExp(this.searchText, "i");
-            return this.userList.filter(function(item) {
-                return regexp.test(item.name);
+            return this.userList.filter(function(user) {
+                return regexp.test(user.name);
             });
         }
     },
