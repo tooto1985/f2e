@@ -1,6 +1,24 @@
-﻿$(function() {
-    var $content = $("#content");
-    $content.html(function(index, oldhtml) {
-        return oldhtml.replace(/(手機[^，。、]*)/g, "<span>$1</span>");
-    });
+﻿new Vue({
+    el: "#app",
+    data: function() {
+        return {
+            searchText: "",
+            userList: []
+        };
+    },
+    computed: {
+        userListInSearch: function() {
+            var regexp = new RegExp(this.searchText, "i");
+            return this.userList.filter(function(user) {
+                return regexp.test(user.name);
+            });
+        }
+    },
+    created: function() {
+        fetch("data.json").then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            this.userList = data;
+        }.bind(this));
+    }
 });

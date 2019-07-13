@@ -1,7 +1,17 @@
-﻿$(function() {
-    var $content = $("#content");
-    $content.html(function(index, oldhtml) {
+﻿new Vue({
+    el: "#app",
+    data: function() {
+        return {
+        };
+    },
+    created: function() {
+        fetch("data.json").then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            this.classList = data;
+        }.bind(this));
+    },
+    methods: {
         
-        return oldhtml.replace(/(手機[^，。、]*)/g, "<span>$1</span>");
-    });
+    }
 });
