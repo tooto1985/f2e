@@ -1,6 +1,1 @@
-﻿$(function() {
-    var $content = $("#content");
-    
-    
-    
-});
+﻿

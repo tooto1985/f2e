@@ -1,13 +1,10 @@
 ﻿$(function() {
-    var data = ["John", "Tom", "Mark", "Allen", "Peter", "David"];
-    $("ul").append("<li class=\"nav-header\">員工名單</li>");
-    $("ul").append("<hr>");
-    /*
-    for (var i = 0; i < data.length; i++) {
-        $("ul").append("<li><a>" + data[i] + "</a></li>");
-    }
-    */
-    for (var i = 0, max = data.length; i < max; i++) {
-        $("ul").append("<li><a>" + data[i] + "</a></li>");
-    }
+    $("#cname").keyup(function() {
+        var $this = $(this);
+        var value = $this.val();
+        $this.removeClass();
+        if (value) {
+            $this.addClass(/^[\u4e00-\u9fa5]{2,4}$/.test(value) ? "yes" : "no");
+        }
+    });
 });

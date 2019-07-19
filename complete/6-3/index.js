@@ -1,27 +1,9 @@
 ﻿$(function() {
-    var hours = new Date().getHours();
-    /*
-    if (hours < 6) {
-        $("#show").text("凌晨");
-    } else if (hours < 12) {
-        $("#show").text("上午");
-    } else if (hours < 18) {
-        $("#show").text("下午");
-    } else {
-        $("#show").text("傍晚");
+    var text = "PC";
+    if (/android/i.test(navigator.userAgent)) {
+        text = "Android";
+    } else if (/iphone/i.test(navigator.userAgent)) {
+        text = "iPhone";
     }
-    */
-    switch (true) {
-        case hours < 6:
-            $("#show").text("凌晨");
-            break;
-        case hours < 12:
-            $("#show").text("上午");
-            break;
-        case hours < 18:
-            $("#show").text("下午");
-            break;
-        default:
-            $("#show").text("傍晚");
-    }
+    $("body").append("<div>" + text + "版網頁</div>");
 });

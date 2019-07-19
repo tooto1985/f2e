@@ -1,21 +1,34 @@
-﻿body {
-    background-color: #efefef;
-}
-
-h3 {
-    background-color: gainsboro;
-    padding: 10px;
-}
-
-div {
-    margin: 10px;
-}
-
-img {
+﻿#list>div
+{
+    width: 320px;
+    height: 200px;
+    background-image: url(images/bg.jpg);
+    margin: 0 auto;
     float: left;
-    margin: 20px 20px 20px 0;
 }
 
-span {
-    background-color: yellow;
+#list>div>div:first-child
+{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 8px;
+    padding-left:0;
+}
+
+#list>div>div
+{
+    padding-bottom: 10px;
+    font-size: 18px;
+    padding-left: 20px;
+}
+
+#search
+{
+    margin-left: 5px;
+    width: 289px;
+    padding: 5px 10px;
+    border-radius: 13px;
+    border: 1px solid gray;
+    outline: none;
 }

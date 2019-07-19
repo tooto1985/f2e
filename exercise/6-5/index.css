@@ -1,7 +1,21 @@
-﻿.well {
-    max-width: 140px; 
-    margin: 20px auto;
+﻿body
+{
+    text-align: center;
+    background-color: ghostwhite;
 }
-hr {
-    margin:0;
+
+div
+{
+    display: inline-block;
+    text-align: left;
+}
+
+input.no
+{
+    background-color: pink;
+}
+
+input.yes
+{
+    background-color: lightgreen;
 }
