@@ -2,7 +2,7 @@
 gulp --version
 if [ "$?" -ne "0" ]
 then 
-  npm install gulp -g
+  npm install gulp-cli -g
 fi
 babel --version
 if [ "$?" -ne "0" ]

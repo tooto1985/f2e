@@ -167,5 +167,5 @@ gulp.task("api", function() {
         }, false);
     }
 });
-gulp.task("default", ["api", "browserSync", "watching"]);
-gulp.task("noserver", ["watching"]);
+gulp.task("default", gulp.parallel("api", "browserSync", "watching"));
+gulp.task("noserver", gulp.parallel("watching"));
