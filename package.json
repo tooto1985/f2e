@@ -14,7 +14,7 @@
   "homepage": "https://github.com/tooto1985/f2e#readme",
   "dependencies": {
     "babel-preset-es2015": "^6.9.0",
-    "browser-sync": "^2.18.5",
+    "browser-sync": "^2.27.10",
     "chokidar": "^1.7.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
