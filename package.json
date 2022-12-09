@@ -17,7 +17,7 @@
     "browser-sync": "^2.18.5",
     "chokidar": "^1.7.0",
     "cookie-parser": "^1.4.3",
-    "express": "^4.15.3",
+    "express": "^4.17.3",
     "find": "^0.2.7",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
