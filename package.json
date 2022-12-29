@@ -20,7 +20,7 @@
     "express": "^4.15.3",
     "find": "^0.2.7",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
+    "gulp-babel": "^8.0.0",
     "gulp-bom": "^1.0.0",
     "gulp-browserify": "^0.5.1",
     "gulp-cache": "^0.4.6",
